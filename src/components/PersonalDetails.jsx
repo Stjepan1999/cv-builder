@@ -8,9 +8,9 @@ export function PersonalDetails() {
     console.log('handling change');
   };
   return (
-    <div className="personal-details">
+    <div className="section-container">
       <h1>Personal Details</h1>
-      <form className="form-container">
+      <form className="form">
         <InputContainer
           label="First Name"
           type="text"

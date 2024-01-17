@@ -1,3 +1,5 @@
+import '../style.css';
+
 export function ResumeContainer() {
-  return <div></div>;
+  return <div className="resume"></div>;
 }

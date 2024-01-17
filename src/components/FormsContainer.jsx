@@ -1,9 +1,9 @@
 import { PersonalDetails } from './PersonalDetails';
 import '../style.css';
 
-export function FormContainer() {
+export function FormsContainer() {
   return (
-    <div>
+    <div className="forms-container">
       <PersonalDetails />
     </div>
   );

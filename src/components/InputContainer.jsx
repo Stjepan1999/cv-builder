@@ -1,6 +1,6 @@
 import '../style.css';
 
-export function InputContainer({ id, label, type, value, placeholder, onChange }) {
+export function InputContainer({ id, label, type, name, value, placeholder, onChange }) {
   return (
     <div className="input-container">
       <label htmlFor={id} className="label-text">
@@ -11,12 +11,21 @@ export function InputContainer({ id, label, type, value, placeholder, onChange }
           className="textarea"
           type={type}
           id={id}
+          name={name}
           value={value}
           placeholder={placeholder}
           onChange={onChange}
         ></textarea>
       ) : (
-        <input className="input" type={type} id={id} value={value} placeholder={placeholder} onChange={onChange} />
+        <input
+          className="input"
+          type={type}
+          id={id}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+        />
       )}
     </div>
   );

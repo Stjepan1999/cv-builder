@@ -1,5 +1,6 @@
 import { PersonalDetails } from './components/PersonalDetails';
 import { ResumeInfoSection } from './components/ResumeInfo';
+import { ResumeSummarySection } from './components/ResumeSummary';
 import { useState } from 'react';
 import './style.css';
 
@@ -8,7 +9,7 @@ export function App() {
     firstName: 'John',
     lastName: 'Smith',
     professionalTitle: 'Web Developer',
-    summary: '',
+    summary: 'I love creating web applications',
   });
 
   const handlePersonalInfoChange = (e) => {
@@ -30,7 +31,9 @@ export function App() {
         </div>
         <div className="resume-container">
           <ResumeInfoSection personalInfo={personalInfo} />
-          <div className="resume-main-section"></div>
+          <div className="resume-main-section">
+            <ResumeSummarySection summary={personalInfo.summary} />
+          </div>
         </div>
       </div>
     </>

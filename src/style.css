@@ -27,6 +27,9 @@ body {
 
 .forms-container {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .section-container {

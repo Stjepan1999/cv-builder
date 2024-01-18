@@ -8,10 +8,10 @@ export function ResumeInfoSection({ personalInfo }) {
         <div className="resume-title">{personalInfo.professionalTitle}</div>
       </div>
       <div className="resume-contact-section">
-        <div className="resume-email">john.smith@gmail.com</div>
-        <div className="resume-phone">+44 8327 0423 743</div>
-        <div className="resume-address">London, UK</div>
-        <div className="resume-website">www.linkedin.com</div>
+        <div className="resume-email">{personalInfo.email}</div>
+        <div className="resume-phone">{personalInfo.phone}</div>
+        <div className="resume-address">{personalInfo.location}</div>
+        <div className="resume-website">{personalInfo.website}</div>
       </div>
     </div>
   );

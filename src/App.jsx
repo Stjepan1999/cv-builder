@@ -1,4 +1,5 @@
 import { PersonalDetails } from './components/PersonalDetails';
+import { ContactInfo } from './components/ContactInfo';
 import { ResumeInfoSection } from './components/ResumeInfo';
 import { ResumeSummarySection } from './components/ResumeSummary';
 import { useState } from 'react';
@@ -10,6 +11,10 @@ export function App() {
     lastName: 'Smith',
     professionalTitle: 'Web Developer',
     summary: 'I love creating web applications',
+    email: '',
+    phone: '',
+    location: '',
+    website: '',
   });
 
   const handlePersonalInfoChange = (e) => {
@@ -26,6 +31,13 @@ export function App() {
             lastName={personalInfo.lastName}
             professionalTitle={personalInfo.professionalTitle}
             summary={personalInfo.summary}
+            onChange={handlePersonalInfoChange}
+          />
+          <ContactInfo
+            email={personalInfo.email}
+            phone={personalInfo.phone}
+            location={personalInfo.location}
+            website={personalInfo.website}
             onChange={handlePersonalInfoChange}
           />
         </div>

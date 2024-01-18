@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { InputContainer } from './InputContainer';
 import '../style.css';
 

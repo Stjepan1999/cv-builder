@@ -6,20 +6,43 @@ import { useState } from 'react';
 import './style.css';
 
 export function App() {
-  const [personalInfo, setPersonalInfo] = useState({
-    firstName: 'John',
-    lastName: 'Smith',
-    professionalTitle: 'Web Developer',
-    summary: 'I love creating web applications',
-    email: '',
-    phone: '',
-    location: '',
-    website: '',
+  const [cvData, setCVData] = useState({
+    personalInfo: {
+      firstName: 'John',
+      lastName: 'Smith',
+      professionalTitle: 'Web Developer',
+      summary: 'I love creating web applications',
+    },
+    contactInfo: {
+      email: '',
+      phone: '',
+      location: '',
+      website: '',
+    },
+    skills: [],
+    education: [
+      {
+        school: '',
+        degree: '',
+        startDate: '',
+        endDate: '',
+      },
+    ],
+    experience: [
+      {
+        company: '',
+        position: '',
+        startDate: '',
+        endDate: '',
+        location: '',
+        description: '',
+      },
+    ],
   });
 
-  const handlePersonalInfoChange = (e) => {
+  const handleCVDataChange = (e, section) => {
     const { name, value } = e.target;
-    setPersonalInfo((prevData) => ({ ...prevData, [name]: value }));
+    setCVData((prevData) => ({ ...prevData, [section]: { ...prevData[section], [name]: value } }));
   };
 
   return (
@@ -27,24 +50,24 @@ export function App() {
       <div className="main">
         <div className="forms-container">
           <PersonalDetails
-            firstName={personalInfo.firstName}
-            lastName={personalInfo.lastName}
-            professionalTitle={personalInfo.professionalTitle}
-            summary={personalInfo.summary}
-            onChange={handlePersonalInfoChange}
+            firstName={cvData.personalInfo.firstName}
+            lastName={cvData.personalInfo.lastName}
+            professionalTitle={cvData.personalInfo.professionalTitle}
+            summary={cvData.personalInfo.summary}
+            onChange={(e) => handleCVDataChange(e, 'personalInfo')}
           />
           <ContactInfo
-            email={personalInfo.email}
-            phone={personalInfo.phone}
-            location={personalInfo.location}
-            website={personalInfo.website}
-            onChange={handlePersonalInfoChange}
+            email={cvData.contactInfo.email}
+            phone={cvData.contactInfo.phone}
+            location={cvData.contactInfo.location}
+            website={cvData.contactInfo.website}
+            onChange={(e) => handleCVDataChange(e, 'contactInfo')}
           />
         </div>
         <div className="resume-container">
-          <ResumeInfoSection personalInfo={personalInfo} />
+          <ResumeInfoSection personalInfo={cvData.personalInfo} contactInfo={cvData.contactInfo} />
           <div className="resume-main-section">
-            <ResumeSummarySection summary={personalInfo.summary} />
+            <ResumeSummarySection summary={cvData.summary} />
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-export function ResumeInfoSection({ personalInfo }) {
+export function ResumeInfoSection({ personalInfo, contactInfo }) {
   return (
     <div className="resume-info-section">
       <div className="resume-name-section">
@@ -8,10 +8,10 @@ export function ResumeInfoSection({ personalInfo }) {
         <div className="resume-title">{personalInfo.professionalTitle}</div>
       </div>
       <div className="resume-contact-section">
-        <div className="resume-email">{personalInfo.email}</div>
-        <div className="resume-phone">{personalInfo.phone}</div>
-        <div className="resume-address">{personalInfo.location}</div>
-        <div className="resume-website">{personalInfo.website}</div>
+        <div className="resume-email">{contactInfo.email}</div>
+        <div className="resume-phone">{contactInfo.phone}</div>
+        <div className="resume-address">{contactInfo.location}</div>
+        <div className="resume-website">{contactInfo.website}</div>
       </div>
     </div>
   );

@@ -2,8 +2,10 @@ import { PersonalDetails } from './components/PersonalDetails';
 import { ContactInfo } from './components/ContactInfo';
 import { ResumeInfoSection } from './components/ResumeInfo';
 import { ResumeSummarySection } from './components/ResumeSummary';
+import { EducationForm } from './components/EducationForm';
 import { useState } from 'react';
 import './style.css';
+import { ResumeEducationSection } from './components/ResumeEducation';
 
 export function App() {
   const [cvData, setCVData] = useState({
@@ -63,11 +65,13 @@ export function App() {
             website={cvData.contactInfo.website}
             onChange={(e) => handleCVDataChange(e, 'contactInfo')}
           />
+          <EducationForm onChange={(e) => handleCVDataChange(e, 'education')} />
         </div>
         <div className="resume-container">
           <ResumeInfoSection personalInfo={cvData.personalInfo} contactInfo={cvData.contactInfo} />
           <div className="resume-main-section">
-            <ResumeSummarySection summary={cvData.summary} />
+            <ResumeSummarySection summary={cvData.personalInfo.summary} />
+            <ResumeEducationSection education={cvData.education} />
           </div>
         </div>
       </div>

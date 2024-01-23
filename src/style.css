@@ -37,8 +37,25 @@ body {
   background-color: var(--white);
   border-radius: 15px;
   width: 100%;
+  box-sizing: border-box;
 }
-
+.section-saved-data {
+  font-size: 20px;
+  padding: 10px 20px;
+  border-top: 7px solid var(--background-color);
+  margin-left: -20px;
+  margin-right: -20px;
+  width: calc(100% + 40px);
+}
+.section-saved-data:first-of-type {
+  margin-top: 10px;
+}
+.section-saved-data:last-of-type {
+  border-bottom: 7px solid var(--background-color);
+}
+.section-saved-data:hover {
+  cursor: pointer;
+}
 .button {
   border-radius: 5px;
   padding: 5px;

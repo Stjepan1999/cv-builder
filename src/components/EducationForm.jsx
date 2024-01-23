@@ -5,6 +5,10 @@ export function EducationForm({ school, degree, startDate, endDate, onChange, on
   return (
     <div className="section-container">
       <h1>Education</h1>
+      <div className="section-saved-data">University of London</div>
+      <div className="section-saved-data">University of London</div>
+      <div className="section-saved-data">University of London</div>
+
       <form className="form" onSubmit={onSubmit}>
         <InputContainer
           type="text"

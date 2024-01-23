@@ -1,11 +1,11 @@
 import { InputContainer } from './InputContainer';
 import '../style.css';
 
-export function EducationForm({ school, degree, startDate, endDate, onChange }) {
+export function EducationForm({ school, degree, startDate, endDate, onChange, onSubmit }) {
   return (
     <div className="section-container">
       <h1>Education</h1>
-      <form className="form">
+      <form className="form" onSubmit={onSubmit}>
         <InputContainer
           type="text"
           id="school"
@@ -42,6 +42,9 @@ export function EducationForm({ school, degree, startDate, endDate, onChange }) 
           value={endDate}
           onChange={onChange}
         />
+        <button type="submit" className="button button-wide">
+          + Education
+        </button>
       </form>
     </div>
   );

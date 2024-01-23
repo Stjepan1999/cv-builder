@@ -39,6 +39,26 @@ body {
   width: 100%;
 }
 
+.button {
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 18px;
+}
+.button:hover {
+  cursor: pointer;
+}
+
+.button-wide {
+  width: 40%;
+  align-self: center;
+  border-radius: 20px;
+  border: 5px solid var(--background-color);
+  background-color: var(--white);
+}
+.button-wide:hover {
+  background-color: var(--background-color);
+}
+
 .form {
   display: flex;
   flex-direction: column;

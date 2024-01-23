@@ -47,6 +47,11 @@ export function App() {
     setCVData((prevData) => ({ ...prevData, [section]: { ...prevData[section], [name]: value } }));
   };
 
+  const handleSubmitButton = (e) => {
+    e.preventDefault();
+    console.log('Submiting data...');
+  };
+
   return (
     <>
       <div className="main">
@@ -65,7 +70,7 @@ export function App() {
             website={cvData.contactInfo.website}
             onChange={(e) => handleCVDataChange(e, 'contactInfo')}
           />
-          <EducationForm onChange={(e) => handleCVDataChange(e, 'education')} />
+          <EducationForm onChange={(e) => handleCVDataChange(e, 'education')} onSubmit={handleSubmitButton} />
         </div>
         <div className="resume-container">
           <ResumeInfoSection personalInfo={cvData.personalInfo} contactInfo={cvData.contactInfo} />

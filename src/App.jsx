@@ -56,6 +56,7 @@ export function App() {
     <>
       <div className="main">
         <div className="forms-container">
+          <img src="./assets/images/cv.png" />
           <PersonalDetails
             firstName={cvData.personalInfo.firstName}
             lastName={cvData.personalInfo.lastName}

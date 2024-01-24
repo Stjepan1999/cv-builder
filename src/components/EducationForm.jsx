@@ -1,10 +1,14 @@
 import { InputContainer } from './InputContainer';
 import '../style.css';
+import graduationCap from '../assets/images/graduation-cap.png';
 
 export function EducationForm({ school, degree, startDate, endDate, onChange, onSubmit }) {
   return (
     <div className="section-container">
-      <h1>Education</h1>
+      <h1>
+        <img src={graduationCap} />
+        Education
+      </h1>
       <div className="section-saved-data">University of London</div>
       <div className="section-saved-data">University of London</div>
       <div className="section-saved-data">University of London</div>

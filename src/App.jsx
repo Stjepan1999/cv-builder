@@ -23,7 +23,14 @@ export function App() {
       website: '',
     },
     skills: [],
-    education: [],
+    education: [
+      {
+        school: 'University Of London',
+        degree: 'Master degree in computer science',
+        startDate: '2019-10-06',
+        endDate: '2024-05-17',
+      },
+    ],
     experience: [
       {
         company: '',
@@ -59,6 +66,7 @@ export function App() {
     e.preventDefault();
     setCVData((prevData) => ({ ...prevData, education: [...prevData.education, educationData] }));
     setEducationData({ school: '', degree: '', startDate: '', endDate: '' });
+    console.log(cvData.education);
   };
 
   const handleEditButton = (e, index) => {

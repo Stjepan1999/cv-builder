@@ -53,7 +53,6 @@ export function EducationForm({
           id="startDate"
           label="Start Date"
           name="startDate"
-          placeholder=""
           value={educationData.startDate}
           onChange={onChange}
         />
@@ -62,7 +61,6 @@ export function EducationForm({
           id="endDate"
           label="End Date"
           name="endDate"
-          placeholder=""
           value={educationData.endDate}
           onChange={onChange}
         />

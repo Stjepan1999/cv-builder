@@ -223,6 +223,7 @@ body {
 
 .resume-education {
   display: flex;
+  margin-bottom: 15px;
 }
 
 .resume-dates {
@@ -231,6 +232,11 @@ body {
 
 .resume-education-info {
   text-align: left;
+}
+
+.resume-education-school {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 @media (max-width: 1000px) {

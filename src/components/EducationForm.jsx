@@ -2,16 +2,18 @@ import { InputContainer } from './InputContainer';
 import '../style.css';
 import graduationCap from '../assets/images/graduation-cap.png';
 
-export function EducationForm({ school, degree, startDate, endDate, onChange, onSubmit }) {
+export function EducationForm({ savedEducation, educationData, onChange, onSubmit }) {
   return (
     <div className="section-container">
       <h1>
         <img src={graduationCap} className="section-icon education" />
         Education
       </h1>
-      <div className="section-saved-data">University of London</div>
-      <div className="section-saved-data">University of London</div>
-      <div className="section-saved-data">University of London</div>
+      {savedEducation.map((data, index) => (
+        <div key={index} className="section-saved-data">
+          <p>{data.school}</p>
+        </div>
+      ))}
 
       <form className="form" onSubmit={onSubmit}>
         <InputContainer
@@ -20,7 +22,7 @@ export function EducationForm({ school, degree, startDate, endDate, onChange, on
           label="School"
           name="school"
           placeholder="University of London"
-          value={school}
+          value={educationData.school}
           onChange={onChange}
         />
         <InputContainer
@@ -29,7 +31,7 @@ export function EducationForm({ school, degree, startDate, endDate, onChange, on
           label="Degree"
           name="degree"
           placeholder="Master's Degree in Programming"
-          value={degree}
+          value={educationData.degree}
           onChange={onChange}
         />
         <InputContainer
@@ -38,7 +40,7 @@ export function EducationForm({ school, degree, startDate, endDate, onChange, on
           label="Start Date"
           name="startDate"
           placeholder=""
-          value={startDate}
+          value={educationData.startDate}
           onChange={onChange}
         />
         <InputContainer
@@ -47,7 +49,7 @@ export function EducationForm({ school, degree, startDate, endDate, onChange, on
           label="End Date"
           name="endDate"
           placeholder=""
-          value={endDate}
+          value={educationData.endDate}
           onChange={onChange}
         />
         <button type="submit" className="button button-wide">

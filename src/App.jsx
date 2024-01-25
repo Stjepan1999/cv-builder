@@ -23,14 +23,7 @@ export function App() {
       website: '',
     },
     skills: [],
-    education: [
-      {
-        school: '',
-        degree: '',
-        startDate: '',
-        endDate: '',
-      },
-    ],
+    education: [],
     experience: [
       {
         company: '',
@@ -43,14 +36,27 @@ export function App() {
     ],
   });
 
+  const [educationData, setEducationData] = useState({
+    school: '',
+    degree: '',
+    startDate: '',
+    endDate: '',
+  });
+
   const handleCVDataChange = (e, section) => {
     const { name, value } = e.target;
     setCVData((prevData) => ({ ...prevData, [section]: { ...prevData[section], [name]: value } }));
   };
 
+  const handleEducationChange = (e) => {
+    const { name, value } = e.target;
+    setEducationData({ ...educationData, [name]: value });
+  };
+
   const handleSubmitButton = (e) => {
     e.preventDefault();
-    console.log('Submiting data...');
+    setCVData((prevData) => ({ ...prevData, education: [...prevData.education, educationData] }));
+    setEducationData({ school: '', degree: '', startDate: '', endDate: '' });
   };
 
   return (
@@ -75,7 +81,12 @@ export function App() {
             website={cvData.contactInfo.website}
             onChange={(e) => handleCVDataChange(e, 'contactInfo')}
           />
-          <EducationForm onChange={(e) => handleCVDataChange(e, 'education')} onSubmit={handleSubmitButton} />
+          <EducationForm
+            onChange={(e) => handleEducationChange(e)}
+            onSubmit={handleSubmitButton}
+            savedEducation={cvData.education}
+            educationData={educationData}
+          />
         </div>
         <div className="resume-container">
           <ResumeInfoSection personalInfo={cvData.personalInfo} contactInfo={cvData.contactInfo} />

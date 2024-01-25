@@ -2,6 +2,7 @@
   --background-color: #f3f4f6;
   --white: #ffffff;
   --text-color: #0e374e;
+  --gray: #808080;
 }
 
 * {
@@ -68,6 +69,9 @@ body {
   margin-left: -20px;
   margin-right: -20px;
   width: calc(100% + 40px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .section-saved-data:first-of-type {
   margin-top: 10px;
@@ -75,29 +79,50 @@ body {
 .section-saved-data:last-of-type {
   border-bottom: 7px solid var(--background-color);
 }
-.section-saved-data:hover {
-  cursor: pointer;
-}
 .button {
   border-radius: 5px;
   padding: 5px;
-  font-size: 18px;
+  font-size: 16px;
+  height: 30px;
+  background-color: var(--white);
+  border: 1px solid var(--gray);
 }
 .button:hover {
   cursor: pointer;
 }
-
+.button-blue {
+  background-color: #187ff5;
+  color: var(--white);
+  border: none;
+}
 .button-wide {
   width: 40%;
   align-self: center;
-  border-radius: 20px;
-  border: 5px solid var(--background-color);
-  background-color: var(--white);
+  border: 1px solid var(--gray);
 }
 .button-wide:hover {
   background-color: var(--background-color);
 }
-
+.no-button-style {
+  border: none;
+  background-color: transparent;
+}
+.button-image {
+  width: 30px;
+  height: 30px;
+}
+.button-image:hover {
+  cursor: pointer;
+}
+.edit-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.button-group {
+  display: flex;
+  gap: 5px;
+}
 .form {
   display: flex;
   flex-direction: column;

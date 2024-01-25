@@ -1,6 +1,7 @@
 import { InputContainer } from './InputContainer';
 import '../style.css';
 import graduationCap from '../assets/images/graduation-cap.png';
+import editIcon from '../assets/images/edit.png';
 
 export function EducationForm({
   savedEducation,
@@ -22,7 +23,9 @@ export function EducationForm({
       {savedEducation.map((data, index) => (
         <div key={index} className="section-saved-data">
           <p>{data.school}</p>
-          <button onClick={(e) => handleEdit(e, index)}>Edit</button>
+          <button onClick={(e) => handleEdit(e, index)} className="no-button-style">
+            <img src={editIcon} alt="Edit" className="button-image" />
+          </button>
         </div>
       ))}
 
@@ -70,17 +73,19 @@ export function EducationForm({
             </button>
           </>
         ) : (
-          <>
-            <button type="button" onClick={handleDelete}>
+          <div className="edit-buttons-container">
+            <button type="button" onClick={handleDelete} className="button">
               Delete
             </button>
-            <button type="button" onClick={handleSave}>
-              Save
-            </button>
-            <button type="button" onClick={handleCancel}>
-              cancel
-            </button>
-          </>
+            <div className="button-group">
+              <button type="button" onClick={handleCancel} className="button">
+                Cancel
+              </button>
+              <button type="button" onClick={handleSave} className="button button-blue">
+                Save
+              </button>
+            </div>
+          </div>
         )}
       </form>
     </div>

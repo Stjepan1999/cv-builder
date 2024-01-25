@@ -6,6 +6,7 @@ import { EducationForm } from './components/EducationForm';
 import { useState } from 'react';
 import './style.css';
 import { ResumeEducationSection } from './components/ResumeEducation';
+import logo from './assets/images/cv.png';
 
 export function App() {
   const [cvData, setCVData] = useState({
@@ -56,7 +57,10 @@ export function App() {
     <>
       <div className="main">
         <div className="forms-container">
-          <img src="./assets/images/cv.png" />
+          <div className="logo-container">
+            <img src={logo} className="logo" />
+            <h1 className="header">CV BUILDER</h1>
+          </div>
           <PersonalDetails
             firstName={cvData.personalInfo.firstName}
             lastName={cvData.personalInfo.lastName}

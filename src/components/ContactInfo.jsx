@@ -1,10 +1,14 @@
 import { InputContainer } from './InputContainer';
+import contactIcon from '../assets/images/phone-box.png';
 import '../style.css';
 
 export function ContactInfo({ email, phone, location, website, onChange }) {
   return (
     <div className="section-container">
-      <h1>Contact Info</h1>
+      <h1>
+        <img src={contactIcon} className="section-icon" />
+        Contact Info
+      </h1>
       <form className="form">
         <InputContainer
           type="text"

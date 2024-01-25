@@ -1,10 +1,14 @@
 import { InputContainer } from './InputContainer';
+import personIcon from '../assets/images/person.png';
 import '../style.css';
 
 export function PersonalDetails({ firstName, lastName, professionalTitle, summary, onChange }) {
   return (
     <div className="section-container">
-      <h1>Personal Details</h1>
+      <h1 className="section-header">
+        <img src={personIcon} className="section-icon" />
+        Personal Details
+      </h1>
       <form className="form">
         <InputContainer
           label="First Name"

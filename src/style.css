@@ -24,6 +24,35 @@ body {
   gap: 30px;
 }
 
+.section-container,
+.logo-container {
+  padding: 20px;
+  background-color: var(--white);
+  border-radius: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+}
+.header {
+  font-size: 48px;
+}
+.section-icon {
+  width: auto;
+  height: 30px;
+  margin-right: 5px;
+}
+.section-icon .education {
+  width: auto;
+}
 .forms-container {
   width: 50%;
   display: flex;
@@ -31,14 +60,6 @@ body {
   gap: 20px;
   height: 90vh;
   overflow-y: auto;
-}
-
-.section-container {
-  padding: 20px;
-  background-color: var(--white);
-  border-radius: 15px;
-  width: 100%;
-  box-sizing: border-box;
 }
 .section-saved-data {
   font-size: 20px;

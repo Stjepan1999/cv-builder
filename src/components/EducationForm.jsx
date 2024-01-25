@@ -6,7 +6,7 @@ export function EducationForm({ school, degree, startDate, endDate, onChange, on
   return (
     <div className="section-container">
       <h1>
-        <img src={graduationCap} />
+        <img src={graduationCap} className="section-icon education" />
         Education
       </h1>
       <div className="section-saved-data">University of London</div>

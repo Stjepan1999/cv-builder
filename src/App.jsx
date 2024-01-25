@@ -76,6 +76,21 @@ export function App() {
     setEditIndex(null);
   };
 
+  const handleDeleteButton = (e) => {
+    e.preventDefault();
+    const updatedData = [...cvData.education];
+    updatedData.splice(editIndex, 1);
+    setCVData((prevData) => ({ ...prevData, education: updatedData }));
+    setEducationData({ school: '', degree: '', startDate: '', endDate: '' });
+    setEditIndex(null);
+  };
+
+  const handleCancelButton = (e) => {
+    e.preventDefault();
+    setEducationData({ school: '', degree: '', startDate: '', endDate: '' });
+    setEditIndex(null);
+  };
+
   return (
     <>
       <div className="main">
@@ -103,6 +118,8 @@ export function App() {
             onSubmit={handleSubmitButton}
             handleEdit={handleEditButton}
             handleSave={handleSaveButton}
+            handleDelete={handleDeleteButton}
+            handleCancel={handleCancelButton}
             editIndex={editIndex}
             savedEducation={cvData.education}
             educationData={educationData}

@@ -43,6 +43,8 @@ export function App() {
     endDate: '',
   });
 
+  const [editIndex, setEditIndex] = useState(null);
+
   const handleCVDataChange = (e, section) => {
     const { name, value } = e.target;
     setCVData((prevData) => ({ ...prevData, [section]: { ...prevData[section], [name]: value } }));
@@ -57,6 +59,21 @@ export function App() {
     e.preventDefault();
     setCVData((prevData) => ({ ...prevData, education: [...prevData.education, educationData] }));
     setEducationData({ school: '', degree: '', startDate: '', endDate: '' });
+  };
+
+  const handleEditButton = (e, index) => {
+    e.preventDefault();
+    setEducationData(cvData.education[index]);
+    setEditIndex(index);
+  };
+
+  const handleSaveButton = (e) => {
+    e.preventDefault();
+    const updatedData = [...cvData.education];
+    updatedData[editIndex] = educationData;
+    setCVData((prevData) => ({ ...prevData, education: updatedData }));
+    setEducationData({ school: '', degree: '', startDate: '', endDate: '' });
+    setEditIndex(null);
   };
 
   return (
@@ -84,6 +101,9 @@ export function App() {
           <EducationForm
             onChange={(e) => handleEducationChange(e)}
             onSubmit={handleSubmitButton}
+            handleEdit={handleEditButton}
+            handleSave={handleSaveButton}
+            editIndex={editIndex}
             savedEducation={cvData.education}
             educationData={educationData}
           />

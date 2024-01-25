@@ -2,7 +2,17 @@ import { InputContainer } from './InputContainer';
 import '../style.css';
 import graduationCap from '../assets/images/graduation-cap.png';
 
-export function EducationForm({ savedEducation, educationData, onChange, onSubmit }) {
+export function EducationForm({
+  savedEducation,
+  educationData,
+  editIndex,
+  onChange,
+  onSubmit,
+  handleEdit,
+  handleSave,
+  handleDelete,
+  handleCancel,
+}) {
   return (
     <div className="section-container">
       <h1>
@@ -12,6 +22,7 @@ export function EducationForm({ savedEducation, educationData, onChange, onSubmi
       {savedEducation.map((data, index) => (
         <div key={index} className="section-saved-data">
           <p>{data.school}</p>
+          <button onClick={(e) => handleEdit(e, index)}>Edit</button>
         </div>
       ))}
 
@@ -52,9 +63,25 @@ export function EducationForm({ savedEducation, educationData, onChange, onSubmi
           value={educationData.endDate}
           onChange={onChange}
         />
-        <button type="submit" className="button button-wide">
-          + Education
-        </button>
+        {editIndex === null ? (
+          <>
+            <button type="submit" className="button button-wide">
+              + Education
+            </button>
+          </>
+        ) : (
+          <>
+            <button type="button" onClick={handleDelete}>
+              Delete
+            </button>
+            <button type="button" onClick={handleSave}>
+              Save
+            </button>
+            <button type="button" onClick={handleCancel}>
+              cancel
+            </button>
+          </>
+        )}
       </form>
     </div>
   );

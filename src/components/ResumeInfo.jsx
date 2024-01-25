@@ -15,19 +15,19 @@ export function ResumeInfoSection({ personalInfo, contactInfo }) {
       <div className="resume-contact-section">
         <div className="resume-info-container">
           {contactInfo.email}
-          <img src={emailIcon} className="resume-info-icon" />
+          {contactInfo.email && <img src={emailIcon} className="resume-info-icon" />}
         </div>
         <div className="resume-info-container">
           {contactInfo.phone}
-          <img src={phoneIcon} className="resume-info-icon" />
+          {contactInfo.phone && <img src={phoneIcon} className="resume-info-icon" />}
         </div>
         <div className="resume-info-container">
           {contactInfo.location}
-          <img src={locationIcon} className="resume-info-icon" />
+          {contactInfo.location && <img src={locationIcon} className="resume-info-icon" />}
         </div>
         <div className="resume-info-container">
           {contactInfo.website}
-          <img src={webIcon} className="resume-info-icon" />
+          {contactInfo.website && <img src={webIcon} className="resume-info-icon" />}
         </div>
       </div>
     </div>

@@ -3,6 +3,8 @@ import { ContactInfo } from './components/ContactInfo';
 import { ResumeInfoSection } from './components/ResumeInfo';
 import { ResumeSummarySection } from './components/ResumeSummary';
 import { EducationForm } from './components/EducationForm';
+import { ExperienceForm } from './components/ExperienceForm';
+import { ResumeExperienceSection } from './components/ResumeExperience';
 import { useState } from 'react';
 import './style.css';
 import { ResumeEducationSection } from './components/ResumeEducation';
@@ -17,10 +19,10 @@ export function App() {
       summary: 'I love creating web applications',
     },
     contactInfo: {
-      email: '',
-      phone: '',
-      location: '',
-      website: '',
+      email: 'john.smith@gmail.com',
+      phone: '+49 879 3123 983',
+      location: 'London, UK',
+      website: 'www.linkedin.com/johnsmith',
     },
     skills: [],
     education: [
@@ -132,12 +134,14 @@ export function App() {
             savedEducation={cvData.education}
             educationData={educationData}
           />
+          <ExperienceForm />
         </div>
         <div className="resume-container">
           <ResumeInfoSection personalInfo={cvData.personalInfo} contactInfo={cvData.contactInfo} />
           <div className="resume-main-section">
             <ResumeSummarySection summary={cvData.personalInfo.summary} />
             <ResumeEducationSection education={cvData.education} />
+            <ResumeExperienceSection />
           </div>
         </div>
       </div>

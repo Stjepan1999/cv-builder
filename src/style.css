@@ -221,7 +221,7 @@ body {
   margin-bottom: 10px;
 }
 
-.resume-education {
+.resume-entry {
   display: flex;
   margin-bottom: 15px;
 }
@@ -230,11 +230,12 @@ body {
   margin-right: 30px;
 }
 
-.resume-education-info {
+.resume-entry-info,
+.resume-entry-location {
   text-align: left;
 }
 
-.resume-education-school {
+.resume-entry-title {
   font-size: 18px;
   font-weight: 600;
 }

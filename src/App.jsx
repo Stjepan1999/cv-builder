@@ -52,7 +52,9 @@ export function App() {
     description: '',
   });
 
-  const [editIndex, setEditIndex] = useState(null);
+  const [educationEditIndex, setEducationEditIndex] = useState(null);
+
+  const [experienceEditIndex, setExperienceEditIndex] = useState(null);
 
   const handleUserDataChange = (e, section) => {
     const { name, value } = e.target;
@@ -80,34 +82,61 @@ export function App() {
     }
   };
 
-  const handleEditButton = (e, index) => {
+  const handleEducationEditButton = (e, index) => {
     e.preventDefault();
     setEducationFormData(userData.education[index]);
-    setEditIndex(index);
+    setEducationEditIndex(index);
   };
 
-  const handleSaveButton = (e) => {
+  const handleExperienceEditButton = (e, index) => {
     e.preventDefault();
-    const updatedData = [...userData.education];
-    updatedData[editIndex] = educationFormData;
-    setUserData((prevData) => ({ ...prevData, education: updatedData }));
-    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
-    setEditIndex(null);
+    setExperienceFormData(userData.experience[index]);
+    setExperienceEditIndex(index);
   };
 
-  const handleDeleteButton = (e) => {
+  const handleSaveButton = (e, section) => {
     e.preventDefault();
-    const updatedData = [...userData.education];
-    updatedData.splice(editIndex, 1);
-    setUserData((prevData) => ({ ...prevData, education: updatedData }));
-    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
-    setEditIndex(null);
+    if (section === 'education') {
+      const updatedData = [...userData.education];
+      updatedData[educationEditIndex] = educationFormData;
+      setUserData((prevData) => ({ ...prevData, education: updatedData }));
+      setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+      setEducationEditIndex(null);
+    } else {
+      const updatedData = [...userData.experience];
+      updatedData[experienceEditIndex] = experienceFormData;
+      setUserData((prevData) => ({ ...prevData, experience: updatedData }));
+      setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
+      setExperienceEditIndex(null);
+    }
   };
 
-  const handleCancelButton = (e) => {
+  const handleDeleteButton = (e, section) => {
     e.preventDefault();
-    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
-    setEditIndex(null);
+    if (section === 'education') {
+      const updatedData = [...userData.education];
+      updatedData.splice(educationEditIndex, 1);
+      setUserData((prevData) => ({ ...prevData, education: updatedData }));
+      setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+      setEducationEditIndex(null);
+    } else {
+      const updatedData = [...userData.experience];
+      updatedData.splice(experienceEditIndex, 1);
+      setUserData((prevData) => ({ ...prevData, experience: updatedData }));
+      setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
+      setExperienceEditIndex(null);
+    }
+  };
+
+  const handleCancelButton = (e, section) => {
+    e.preventDefault();
+    if (section === 'education') {
+      setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+      setEducationEditIndex(null);
+    } else {
+      setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
+      setExperienceEditIndex(null);
+    }
   };
 
   const formatDate = (date) => {
@@ -144,22 +173,22 @@ export function App() {
           <EducationForm
             onChange={(e) => handleFormDataChange(e, 'education')}
             onSubmit={(e) => handleSubmitButton(e, 'education')}
-            handleEdit={handleEditButton}
-            handleSave={handleSaveButton}
-            handleDelete={handleDeleteButton}
-            handleCancel={handleCancelButton}
-            editIndex={editIndex}
+            handleEdit={handleEducationEditButton}
+            handleSave={(e) => handleSaveButton(e, 'education')}
+            handleDelete={(e) => handleDeleteButton(e, 'education')}
+            handleCancel={(e) => handleCancelButton(e, 'education')}
+            editIndex={educationEditIndex}
             savedEducation={userData.education}
             educationFormData={educationFormData}
           />
           <ExperienceForm
             onChange={(e) => handleFormDataChange(e, 'experience')}
             onSubmit={(e) => handleSubmitButton(e, 'experience')}
-            handleEdit={handleEditButton}
-            handleSave={handleSaveButton}
-            handleDelete={handleDeleteButton}
-            handleCancel={handleCancelButton}
-            editIndex={editIndex}
+            handleEdit={handleExperienceEditButton}
+            handleSave={(e) => handleSaveButton(e, 'experience')}
+            handleDelete={(e) => handleDeleteButton(e, 'experience')}
+            handleCancel={(e) => handleCancelButton(e, 'experience')}
+            editIndex={experienceEditIndex}
             experienceFormData={experienceFormData}
             savedExperience={userData.experience}
           />

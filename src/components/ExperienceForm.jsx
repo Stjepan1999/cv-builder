@@ -6,8 +6,10 @@ import editIcon from '../assets/images/edit.png';
 export function ExperienceForm({
   onSubmit,
   onChange,
-  experienceData,
+  experienceFormData,
+  savedExperience,
   editIndex,
+  handleEdit,
   handleSave,
   handleDelete,
   handleCancel,
@@ -18,6 +20,14 @@ export function ExperienceForm({
         <img src={experienceIcon} className="section-icon education" />
         Experience
       </h1>
+      {savedExperience.map((data, index) => (
+        <div key={index} className="section-saved-data">
+          <p>{data.company}</p>
+          <button onClick={(e) => handleEdit(e, index)} className="no-button-style">
+            <img src={editIcon} alt="Edit" className="button-image" />
+          </button>
+        </div>
+      ))}
 
       <form className="form" onSubmit={onSubmit}>
         <InputContainer
@@ -26,7 +36,7 @@ export function ExperienceForm({
           label="Company"
           name="company"
           placeholder="Enter company name"
-          //value={experienceData.company}
+          value={experienceFormData.company}
           onChange={onChange}
         />
         <InputContainer
@@ -35,7 +45,7 @@ export function ExperienceForm({
           label="Position"
           name="position"
           placeholder="Enter position"
-          //value={experienceData.title}
+          value={experienceFormData.position}
           onChange={onChange}
         />
         <InputContainer
@@ -43,7 +53,7 @@ export function ExperienceForm({
           id="startDate"
           label="Start Date"
           name="startDate"
-          //value={experienceData.startDate}
+          value={experienceFormData.startDate}
           onChange={onChange}
         />
         <InputContainer
@@ -51,7 +61,7 @@ export function ExperienceForm({
           id="endDate"
           label="End Date"
           name="endDate"
-          //value={experienceData.endDate}
+          value={experienceFormData.endDate}
           onChange={onChange}
         />
         <InputContainer
@@ -60,7 +70,7 @@ export function ExperienceForm({
           label="Location"
           name="location"
           placeholder="Enter location"
-          //value={experienceData.endDate}
+          value={experienceFormData.location}
           onChange={onChange}
         />
         <InputContainer
@@ -69,13 +79,13 @@ export function ExperienceForm({
           label="Description"
           name="description"
           placeholder="Main tasks"
-          //value={experienceData.endDate}
+          value={experienceFormData.description}
           onChange={onChange}
         />
         {editIndex === null ? (
           <>
             <button type="submit" className="button button-wide">
-              + Education
+              + Experience
             </button>
           </>
         ) : (

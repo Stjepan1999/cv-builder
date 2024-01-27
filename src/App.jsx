@@ -11,7 +11,7 @@ import { ResumeEducationSection } from './components/ResumeEducation';
 import logo from './assets/images/cv.png';
 
 export function App() {
-  const [cvData, setCVData] = useState({
+  const [userData, setUserData] = useState({
     personalInfo: {
       firstName: 'John',
       lastName: 'Smith',
@@ -33,71 +33,80 @@ export function App() {
         endDate: '2024-05-17',
       },
     ],
-    experience: [
-      {
-        company: '',
-        position: '',
-        startDate: '',
-        endDate: '',
-        location: '',
-        description: '',
-      },
-    ],
+    experience: [],
   });
 
-  const [educationData, setEducationData] = useState({
+  const [educationFormData, setEducationFormData] = useState({
     school: '',
     degree: '',
     startDate: '',
     endDate: '',
   });
 
+  const [experienceFormData, setExperienceFormData] = useState({
+    company: '',
+    position: '',
+    startDate: '',
+    endDate: '',
+    location: '',
+    description: '',
+  });
+
   const [editIndex, setEditIndex] = useState(null);
 
-  const handleCVDataChange = (e, section) => {
+  const handleUserDataChange = (e, section) => {
     const { name, value } = e.target;
-    setCVData((prevData) => ({ ...prevData, [section]: { ...prevData[section], [name]: value } }));
+    setUserData((prevData) => ({ ...prevData, [section]: { ...prevData[section], [name]: value } }));
   };
 
-  const handleEducationChange = (e) => {
+  const handleFormDataChange = (e, section) => {
     const { name, value } = e.target;
-    setEducationData({ ...educationData, [name]: value });
+    setEducationFormData({ ...educationFormData, [name]: value });
+    if (section === 'education') {
+      setEducationFormData({ ...educationFormData, [name]: value });
+    } else if (section === 'experience') {
+      setExperienceFormData({ ...experienceFormData, [name]: value });
+    }
   };
 
-  const handleSubmitButton = (e) => {
+  const handleSubmitButton = (e, section) => {
     e.preventDefault();
-    setCVData((prevData) => ({ ...prevData, education: [...prevData.education, educationData] }));
-    setEducationData({ school: '', degree: '', startDate: '', endDate: '' });
-    console.log(cvData.education);
+    if (section === 'education') {
+      setUserData((prevData) => ({ ...prevData, education: [...prevData.education, educationFormData] }));
+      setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+    } else {
+      setUserData((prevData) => ({ ...prevData, experience: [...prevData.experience, experienceFormData] }));
+      setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
+    }
   };
 
   const handleEditButton = (e, index) => {
     e.preventDefault();
-    setEducationData(cvData.education[index]);
+    setEducationFormData(userData.education[index]);
     setEditIndex(index);
   };
 
   const handleSaveButton = (e) => {
     e.preventDefault();
-    const updatedData = [...cvData.education];
-    updatedData[editIndex] = educationData;
-    setCVData((prevData) => ({ ...prevData, education: updatedData }));
-    setEducationData({ school: '', degree: '', startDate: '', endDate: '' });
+    const updatedData = [...userData.education];
+    updatedData[editIndex] = educationFormData;
+    setUserData((prevData) => ({ ...prevData, education: updatedData }));
+    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
     setEditIndex(null);
   };
 
   const handleDeleteButton = (e) => {
     e.preventDefault();
-    const updatedData = [...cvData.education];
+    const updatedData = [...userData.education];
     updatedData.splice(editIndex, 1);
-    setCVData((prevData) => ({ ...prevData, education: updatedData }));
-    setEducationData({ school: '', degree: '', startDate: '', endDate: '' });
+    setUserData((prevData) => ({ ...prevData, education: updatedData }));
+    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
     setEditIndex(null);
   };
 
   const handleCancelButton = (e) => {
     e.preventDefault();
-    setEducationData({ school: '', degree: '', startDate: '', endDate: '' });
+    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
     setEditIndex(null);
   };
 
@@ -110,37 +119,47 @@ export function App() {
             <h1 className="header">CV BUILDER</h1>
           </div>
           <PersonalDetails
-            firstName={cvData.personalInfo.firstName}
-            lastName={cvData.personalInfo.lastName}
-            professionalTitle={cvData.personalInfo.professionalTitle}
-            summary={cvData.personalInfo.summary}
-            onChange={(e) => handleCVDataChange(e, 'personalInfo')}
+            firstName={userData.personalInfo.firstName}
+            lastName={userData.personalInfo.lastName}
+            professionalTitle={userData.personalInfo.professionalTitle}
+            summary={userData.personalInfo.summary}
+            onChange={(e) => handleUserDataChange(e, 'personalInfo')}
           />
           <ContactInfo
-            email={cvData.contactInfo.email}
-            phone={cvData.contactInfo.phone}
-            location={cvData.contactInfo.location}
-            website={cvData.contactInfo.website}
-            onChange={(e) => handleCVDataChange(e, 'contactInfo')}
+            email={userData.contactInfo.email}
+            phone={userData.contactInfo.phone}
+            location={userData.contactInfo.location}
+            website={userData.contactInfo.website}
+            onChange={(e) => handleUserDataChange(e, 'contactInfo')}
           />
           <EducationForm
-            onChange={(e) => handleEducationChange(e)}
-            onSubmit={handleSubmitButton}
+            onChange={(e) => handleFormDataChange(e, 'education')}
+            onSubmit={(e) => handleSubmitButton(e, 'education')}
             handleEdit={handleEditButton}
             handleSave={handleSaveButton}
             handleDelete={handleDeleteButton}
             handleCancel={handleCancelButton}
             editIndex={editIndex}
-            savedEducation={cvData.education}
-            educationData={educationData}
+            savedEducation={userData.education}
+            educationFormData={educationFormData}
           />
-          <ExperienceForm />
+          <ExperienceForm
+            onChange={(e) => handleFormDataChange(e, 'experience')}
+            onSubmit={(e) => handleSubmitButton(e, 'experience')}
+            handleEdit={handleEditButton}
+            handleSave={handleSaveButton}
+            handleDelete={handleDeleteButton}
+            handleCancel={handleCancelButton}
+            editIndex={editIndex}
+            experienceFormData={experienceFormData}
+            savedExperience={userData.experience}
+          />
         </div>
         <div className="resume-container">
-          <ResumeInfoSection personalInfo={cvData.personalInfo} contactInfo={cvData.contactInfo} />
+          <ResumeInfoSection personalInfo={userData.personalInfo} contactInfo={userData.contactInfo} />
           <div className="resume-main-section">
-            <ResumeSummarySection summary={cvData.personalInfo.summary} />
-            <ResumeEducationSection education={cvData.education} />
+            <ResumeSummarySection summary={userData.personalInfo.summary} />
+            <ResumeEducationSection education={userData.education} />
             <ResumeExperienceSection />
           </div>
         </div>

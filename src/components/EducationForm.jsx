@@ -5,7 +5,7 @@ import editIcon from '../assets/images/edit.png';
 
 export function EducationForm({
   savedEducation,
-  educationData,
+  educationFormData,
   editIndex,
   onChange,
   onSubmit,
@@ -36,7 +36,7 @@ export function EducationForm({
           label="School"
           name="school"
           placeholder="University of London"
-          value={educationData.school}
+          value={educationFormData.school}
           onChange={onChange}
         />
         <InputContainer
@@ -45,7 +45,7 @@ export function EducationForm({
           label="Degree"
           name="degree"
           placeholder="Master's Degree in Programming"
-          value={educationData.degree}
+          value={educationFormData.degree}
           onChange={onChange}
         />
         <InputContainer
@@ -53,7 +53,7 @@ export function EducationForm({
           id="startDate"
           label="Start Date"
           name="startDate"
-          value={educationData.startDate}
+          value={educationFormData.startDate}
           onChange={onChange}
         />
         <InputContainer
@@ -61,7 +61,7 @@ export function EducationForm({
           id="endDate"
           label="End Date"
           name="endDate"
-          value={educationData.endDate}
+          value={educationFormData.endDate}
           onChange={onChange}
         />
         {editIndex === null ? (

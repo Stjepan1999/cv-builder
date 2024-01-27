@@ -110,6 +110,15 @@ export function App() {
     setEditIndex(null);
   };
 
+  const formatDate = (date) => {
+    const dateInput = new Date(date);
+    const yyyy = dateInput.getFullYear();
+    let mm = dateInput.getMonth() + 1;
+    if (mm < 10) mm = '0' + mm;
+
+    return `${mm}/${yyyy}`;
+  };
+
   return (
     <>
       <div className="main">
@@ -159,8 +168,8 @@ export function App() {
           <ResumeInfoSection personalInfo={userData.personalInfo} contactInfo={userData.contactInfo} />
           <div className="resume-main-section">
             <ResumeSummarySection summary={userData.personalInfo.summary} />
-            <ResumeEducationSection education={userData.education} />
-            <ResumeExperienceSection />
+            <ResumeEducationSection education={userData.education} formatDate={formatDate} />
+            <ResumeExperienceSection experienceData={userData.experience} formatDate={formatDate} />
           </div>
         </div>
       </div>

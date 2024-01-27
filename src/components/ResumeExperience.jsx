@@ -1,20 +1,24 @@
-export function ResumeExperienceSection({ experienceData }) {
-  return (
-    <>
-      <div className="resume-section">
-        <div className="resume-section-title">Experience</div>
-        <div className="resume-entry">
-          <div className="resume-dates">
-            02/2019 <span>-</span> 04/2023
-            <div className="resume-entry-location">London, UK</div>
-          </div>
-          <div className="resume-entry-info">
-            <div className="resume-entry-title">Company A</div>
-            <div className="resume-entry-position">Software Engineer</div>
-            <p className="resume-entry-description">I developed software with JavaScript</p>
-          </div>
+export function ResumeExperienceSection({ experienceData, formatDate }) {
+  if (experienceData && experienceData.length > 0) {
+    return (
+      <>
+        <div className="resume-section">
+          <div className="resume-section-title">Experience</div>
+          {experienceData.map((experience, index) => (
+            <div className="resume-entry" key={index}>
+              <div className="resume-dates">
+                {formatDate(experience.startDate)} <span>-</span> {formatDate(experience.endDate)}
+                <div className="resume-entry-location">{experience.location}</div>
+              </div>
+              <div className="resume-entry-info">
+                <div className="resume-entry-title">{experience.company}</div>
+                <div className="resume-entry-position">{experience.position}</div>
+                <p className="resume-entry-description">{experience.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }

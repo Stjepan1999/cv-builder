@@ -6,6 +6,7 @@ import { EducationForm } from './components/EducationForm';
 import { ExperienceForm } from './components/ExperienceForm';
 import { SkillsForm } from './components/SkillsForm';
 import { ResumeExperienceSection } from './components/ResumeExperience';
+import { ResumeSkillsSection } from './components/ResumeSkills';
 import { useState } from 'react';
 import './style.css';
 import { ResumeEducationSection } from './components/ResumeEducation';
@@ -25,7 +26,7 @@ export function App() {
       location: 'London, UK',
       website: 'www.linkedin.com/johnsmith',
     },
-    skills: ['JavaScript', 'HTML', 'CSS', 'Git', 'React', 'Communication', 'Teamwork', 'Germany'],
+    skills: ['JavaScript', 'HTML', 'CSS', 'Git', 'React', 'Node.js', 'SQL', 'Communication', 'Teamwork', 'Germany'],
     education: [
       {
         school: 'University Of London',
@@ -211,6 +212,7 @@ export function App() {
             <ResumeSummarySection summary={userData.personalInfo.summary} />
             <ResumeEducationSection education={userData.education} formatDate={formatDate} />
             <ResumeExperienceSection experienceData={userData.experience} formatDate={formatDate} />
+            <ResumeSkillsSection skills={userData.skills} />
           </div>
         </div>
       </div>

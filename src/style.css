@@ -256,6 +256,17 @@ body {
   font-weight: 600;
 }
 
+.resume-skills {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.resume-skill-item {
+  flex: 0 0 33.33%;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
 @media (max-width: 1000px) {
   .main {
     flex-direction: column;

@@ -4,6 +4,7 @@ import { ResumeInfoSection } from './components/ResumeInfo';
 import { ResumeSummarySection } from './components/ResumeSummary';
 import { EducationForm } from './components/EducationForm';
 import { ExperienceForm } from './components/ExperienceForm';
+import { SkillsForm } from './components/SkillsForm';
 import { ResumeExperienceSection } from './components/ResumeExperience';
 import { useState } from 'react';
 import './style.css';
@@ -24,7 +25,7 @@ export function App() {
       location: 'London, UK',
       website: 'www.linkedin.com/johnsmith',
     },
-    skills: [],
+    skills: ['JavaScript', 'HTML', 'CSS', 'Git', 'React', 'Communication', 'Teamwork', 'Germany'],
     education: [
       {
         school: 'University Of London',
@@ -33,7 +34,17 @@ export function App() {
         endDate: '2024-05-17',
       },
     ],
-    experience: [],
+    experience: [
+      {
+        company: 'Tech Innovators Ltd',
+        position: 'Senior Software Engineer',
+        startDate: '2018-06-01',
+        endDate: '2022-12-31',
+        location: 'San Francisco, CA',
+        description:
+          'Led a team of developers in creating cutting-edge software solutions. Collaborated with cross-functional teams to deliver high-quality products. Contributed to the development and optimization of scalable and efficient code.',
+      },
+    ],
   });
 
   const [educationFormData, setEducationFormData] = useState({
@@ -192,6 +203,7 @@ export function App() {
             experienceFormData={experienceFormData}
             savedExperience={userData.experience}
           />
+          <SkillsForm savedSkills={userData.skills} />
         </div>
         <div className="resume-container">
           <ResumeInfoSection personalInfo={userData.personalInfo} contactInfo={userData.contactInfo} />

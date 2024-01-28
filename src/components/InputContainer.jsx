@@ -25,6 +25,7 @@ export function InputContainer({ id, label, type, name, value, placeholder, onCh
           value={value}
           placeholder={placeholder}
           onChange={onChange}
+          required
         />
       )}
     </div>

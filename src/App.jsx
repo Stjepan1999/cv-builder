@@ -64,9 +64,11 @@ export function App() {
     description: '',
   });
 
-  const [educationEditIndex, setEducationEditIndex] = useState(null);
+  const [skillFormData, setSkillFormData] = useState('');
 
+  const [educationEditIndex, setEducationEditIndex] = useState(null);
   const [experienceEditIndex, setExperienceEditIndex] = useState(null);
+  const [skillEditIndex, setSkillEditIndex] = useState(null);
 
   const handleUserDataChange = (e, section) => {
     const { name, value } = e.target;
@@ -80,6 +82,8 @@ export function App() {
       setEducationFormData({ ...educationFormData, [name]: value });
     } else if (section === 'experience') {
       setExperienceFormData({ ...experienceFormData, [name]: value });
+    } else if (section === 'skills') {
+      setSkillFormData(value);
     }
   };
 
@@ -88,9 +92,12 @@ export function App() {
     if (section === 'education') {
       setUserData((prevData) => ({ ...prevData, education: [...prevData.education, educationFormData] }));
       setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
-    } else {
+    } else if (section === 'experience') {
       setUserData((prevData) => ({ ...prevData, experience: [...prevData.experience, experienceFormData] }));
       setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
+    } else if (section === 'skills') {
+      setUserData((prevData) => ({ ...prevData, skills: [...prevData.skills, skillFormData] }));
+      setSkillFormData('');
     }
   };
 
@@ -204,7 +211,17 @@ export function App() {
             experienceFormData={experienceFormData}
             savedExperience={userData.experience}
           />
-          <SkillsForm savedSkills={userData.skills} />
+          <SkillsForm
+            onChange={(e) => handleFormDataChange(e, 'skills')}
+            onSubmit={(e) => handleSubmitButton(e, 'skills')}
+            handleEdit={handleExperienceEditButton}
+            handleSave={(e) => handleSaveButton(e, 'skills')}
+            handleDelete={(e) => handleDeleteButton(e, 'skills')}
+            handleCancel={(e) => handleCancelButton(e, 'skills')}
+            editIndex={skillEditIndex}
+            skillFormData={skillFormData}
+            savedSkills={userData.skills}
+          />
         </div>
         <div className="resume-container">
           <ResumeInfoSection personalInfo={userData.personalInfo} contactInfo={userData.contactInfo} />

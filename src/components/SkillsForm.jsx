@@ -11,6 +11,7 @@ export function SkillsForm({
   handleSave,
   handleDelete,
   handleCancel,
+  skillFormData,
 }) {
   return (
     <div className="section-container">
@@ -33,13 +34,13 @@ export function SkillsForm({
           label="Skill"
           name="skills"
           placeholder="Enter skill"
-          //value={}
-          //onChange={}
+          value={skillFormData}
+          onChange={onChange}
         />
         {editIndex === null ? (
           <>
             <button type="submit" className="button button-wide">
-              + Experience
+              + Skill
             </button>
           </>
         ) : (

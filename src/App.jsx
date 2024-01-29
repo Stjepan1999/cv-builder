@@ -7,9 +7,9 @@ import { ExperienceForm } from './components/ExperienceForm';
 import { SkillsForm } from './components/SkillsForm';
 import { ResumeExperienceSection } from './components/ResumeExperience';
 import { ResumeSkillsSection } from './components/ResumeSkills';
+import { ResumeEducationSection } from './components/ResumeEducation';
 import { useState } from 'react';
 import './style.css';
-import { ResumeEducationSection } from './components/ResumeEducation';
 import logo from './assets/images/cv.png';
 
 export function App() {
@@ -113,6 +113,12 @@ export function App() {
     setExperienceEditIndex(index);
   };
 
+  const handleSkillEditButton = (e, index) => {
+    e.preventDefault();
+    setSkillFormData(userData.skills[index]);
+    setSkillEditIndex(index);
+  };
+
   const handleSaveButton = (e, section) => {
     e.preventDefault();
     if (section === 'education') {
@@ -121,12 +127,18 @@ export function App() {
       setUserData((prevData) => ({ ...prevData, education: updatedData }));
       setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
       setEducationEditIndex(null);
-    } else {
+    } else if (section === 'experience') {
       const updatedData = [...userData.experience];
       updatedData[experienceEditIndex] = experienceFormData;
       setUserData((prevData) => ({ ...prevData, experience: updatedData }));
       setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
       setExperienceEditIndex(null);
+    } else if (section === 'skills') {
+      const updatedData = [...userData.skills];
+      updatedData[skillEditIndex] = skillFormData;
+      setUserData((prevData) => ({ ...prevData, skills: updatedData }));
+      setSkillFormData('');
+      setSkillEditIndex(null);
     }
   };
 
@@ -138,12 +150,18 @@ export function App() {
       setUserData((prevData) => ({ ...prevData, education: updatedData }));
       setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
       setEducationEditIndex(null);
-    } else {
+    } else if (section === 'experience') {
       const updatedData = [...userData.experience];
       updatedData.splice(experienceEditIndex, 1);
       setUserData((prevData) => ({ ...prevData, experience: updatedData }));
       setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
       setExperienceEditIndex(null);
+    } else if (section === 'skills') {
+      const updatedData = [...userData.skills];
+      updatedData.splice(skillEditIndex, 1);
+      setUserData((prevData) => ({ ...prevData, skills: updatedData }));
+      setSkillFormData('');
+      setSkillEditIndex(null);
     }
   };
 
@@ -152,9 +170,12 @@ export function App() {
     if (section === 'education') {
       setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
       setEducationEditIndex(null);
-    } else {
+    } else if (section === 'experience') {
       setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
       setExperienceEditIndex(null);
+    } else if (section === 'skills') {
+      setSkillFormData('');
+      setSkillEditIndex(null);
     }
   };
 
@@ -214,7 +235,7 @@ export function App() {
           <SkillsForm
             onChange={(e) => handleFormDataChange(e, 'skills')}
             onSubmit={(e) => handleSubmitButton(e, 'skills')}
-            handleEdit={handleExperienceEditButton}
+            handleEdit={handleSkillEditButton}
             handleSave={(e) => handleSaveButton(e, 'skills')}
             handleDelete={(e) => handleDeleteButton(e, 'skills')}
             handleCancel={(e) => handleCancelButton(e, 'skills')}

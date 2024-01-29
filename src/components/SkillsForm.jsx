@@ -22,7 +22,7 @@ export function SkillsForm({
       </h1>
       <div key="index" className="skill-container">
         {savedSkills.map((skill, index) => (
-          <div className="skill" key={index}>
+          <div className="skill" key={index} onClick={(e) => handleEdit(e, index)}>
             {skill}
           </div>
         ))}

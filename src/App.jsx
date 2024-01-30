@@ -18,7 +18,8 @@ export function App() {
       firstName: 'John',
       lastName: 'Smith',
       professionalTitle: 'Web Developer',
-      summary: 'I love creating web applications',
+      summary:
+        'Creative problem solver and coding enthusiast specializing in crafting seamless user experiences. Proficient in HTML, CSS, JavaScript, and React. Passionate about transforming design concepts into interactive and visually stunning web applications. ',
     },
     contactInfo: {
       email: 'john.smith@gmail.com',

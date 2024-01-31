@@ -1,6 +1,6 @@
 import '../style.css';
 
-export function ResumeSkillsSection({ skills }) {
+export const ResumeSkillsSection = ({ skills }) => {
   if (skills) {
     return (
       <div className="resume-section">
@@ -15,4 +15,4 @@ export function ResumeSkillsSection({ skills }) {
       </div>
     );
   }
-}
+};

@@ -2,7 +2,7 @@ import { InputContainer } from './InputContainer';
 import contactIcon from '../assets/images/phone-box.png';
 import '../style.css';
 
-export function ContactInfo({ email, phone, location, website, onChange }) {
+export const ContactInfo = ({ email, phone, location, website, onChange }) => {
   return (
     <div className="section-container">
       <h1>
@@ -49,4 +49,4 @@ export function ContactInfo({ email, phone, location, website, onChange }) {
       </form>
     </div>
   );
-}
+};

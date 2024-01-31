@@ -12,7 +12,7 @@ import { useState } from 'react';
 import './style.css';
 import logo from './assets/images/cv.png';
 
-export function App() {
+export const App = () => {
   const [userData, setUserData] = useState({
     personalInfo: {
       firstName: 'John',
@@ -78,7 +78,6 @@ export function App() {
 
   const handleFormDataChange = (e, section) => {
     const { name, value } = e.target;
-    setEducationFormData({ ...educationFormData, [name]: value });
     if (section === 'education') {
       setEducationFormData({ ...educationFormData, [name]: value });
     } else if (section === 'experience') {
@@ -194,23 +193,15 @@ export function App() {
       <div className="main">
         <div className="forms-container">
           <div className="logo-container">
-            <img src={logo} className="logo" />
+            <img src={logo} className="logo" alt="CV Builder Logo" />
             <h1 className="header">CV BUILDER</h1>
           </div>
-          <PersonalDetails
-            firstName={userData.personalInfo.firstName}
-            lastName={userData.personalInfo.lastName}
-            professionalTitle={userData.personalInfo.professionalTitle}
-            summary={userData.personalInfo.summary}
-            onChange={(e) => handleUserDataChange(e, 'personalInfo')}
-          />
-          <ContactInfo
-            email={userData.contactInfo.email}
-            phone={userData.contactInfo.phone}
-            location={userData.contactInfo.location}
-            website={userData.contactInfo.website}
-            onChange={(e) => handleUserDataChange(e, 'contactInfo')}
-          />
+          <div className="section-container">
+            <button>Load Example</button>
+            <button>Download PDF</button>
+          </div>
+          <PersonalDetails {...userData.personalInfo} onChange={(e) => handleUserDataChange(e, 'personalInfo')} />
+          <ContactInfo {...userData.contactInfo} onChange={(e) => handleUserDataChange(e, 'contactInfo')} />
           <EducationForm
             onChange={(e) => handleFormDataChange(e, 'education')}
             onSubmit={(e) => handleSubmitButton(e, 'education')}
@@ -257,4 +248,4 @@ export function App() {
       </div>
     </>
   );
-}
+};

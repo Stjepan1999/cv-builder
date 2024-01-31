@@ -1,4 +1,4 @@
-export function ResumeExperienceSection({ experienceData, formatDate }) {
+export const ResumeExperienceSection = ({ experienceData, formatDate }) => {
   if (experienceData && experienceData.length > 0) {
     return (
       <>
@@ -21,4 +21,4 @@ export function ResumeExperienceSection({ experienceData, formatDate }) {
       </>
     );
   }
-}
+};

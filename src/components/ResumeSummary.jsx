@@ -1,6 +1,6 @@
 import '../style.css';
 
-export function ResumeSummarySection({ summary }) {
+export const ResumeSummarySection = ({ summary }) => {
   if (summary) {
     return (
       <div className="resume-section">
@@ -9,4 +9,4 @@ export function ResumeSummarySection({ summary }) {
       </div>
     );
   }
-}
+};

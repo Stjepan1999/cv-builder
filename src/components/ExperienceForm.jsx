@@ -1,9 +1,10 @@
 import { InputContainer } from './InputContainer';
+import { FormButtons } from './FormButtons';
 import '../style.css';
 import experienceIcon from '../assets/images/briefcase.png';
 import editIcon from '../assets/images/edit.png';
 
-export function ExperienceForm({
+export const ExperienceForm = ({
   onSubmit,
   onChange,
   experienceFormData,
@@ -13,11 +14,11 @@ export function ExperienceForm({
   handleSave,
   handleDelete,
   handleCancel,
-}) {
+}) => {
   return (
     <div className="section-container">
       <h1>
-        <img src={experienceIcon} className="section-icon education" />
+        <img src={experienceIcon} className="section-icon education" alt="Briefcase icon" />
         Experience
       </h1>
       {savedExperience.map((data, index) => (
@@ -82,28 +83,13 @@ export function ExperienceForm({
           value={experienceFormData.description}
           onChange={onChange}
         />
-        {editIndex === null ? (
-          <>
-            <button type="submit" className="button button-wide">
-              + Experience
-            </button>
-          </>
-        ) : (
-          <div className="edit-buttons-container">
-            <button type="button" onClick={handleDelete} className="button">
-              Delete
-            </button>
-            <div className="button-group">
-              <button type="button" onClick={handleCancel} className="button">
-                Cancel
-              </button>
-              <button type="button" onClick={handleSave} className="button button-blue">
-                Save
-              </button>
-            </div>
-          </div>
-        )}
+        <FormButtons
+          editIndex={editIndex}
+          handleSave={handleSave}
+          handleDelete={handleDelete}
+          handleCancel={handleCancel}
+        />
       </form>
     </div>
   );
-}
+};

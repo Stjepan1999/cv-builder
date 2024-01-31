@@ -1,4 +1,4 @@
-export function ResumeEducationSection({ education, formatDate }) {
+export const ResumeEducationSection = ({ education, formatDate }) => {
   if (education && education.length > 0) {
     return (
       <div className="resume-section">
@@ -17,4 +17,4 @@ export function ResumeEducationSection({ education, formatDate }) {
       </div>
     );
   }
-}
+};

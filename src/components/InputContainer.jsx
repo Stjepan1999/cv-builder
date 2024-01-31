@@ -1,6 +1,6 @@
 import '../style.css';
 
-export function InputContainer({ id, label, type, name, value, placeholder, onChange }) {
+export const InputContainer = ({ id, label, type, name, value, placeholder, onChange }) => {
   return (
     <div className="input-container">
       <label htmlFor={id} className="label-text">
@@ -30,4 +30,4 @@ export function InputContainer({ id, label, type, name, value, placeholder, onCh
       )}
     </div>
   );
-}
+};

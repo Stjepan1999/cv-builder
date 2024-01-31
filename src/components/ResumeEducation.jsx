@@ -1,5 +1,5 @@
 export const ResumeEducationSection = ({ education, formatDate }) => {
-  if (education && education.length > 0) {
+  if (education[0].school) {
     return (
       <div className="resume-section">
         <div className="resume-section-title">Education</div>

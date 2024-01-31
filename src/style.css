@@ -111,11 +111,7 @@ body {
 }
 .button:hover {
   cursor: pointer;
-}
-.button-blue {
-  background-color: #187ff5;
-  color: var(--white);
-  border: none;
+  background-color: var(--background-color);
 }
 .button-wide {
   width: 40%;
@@ -124,6 +120,22 @@ body {
 }
 .button-wide:hover {
   background-color: var(--background-color);
+}
+.button-blue {
+  background-color: #187ff5;
+  color: var(--white);
+  border: none;
+}
+.button-blue:hover {
+  background-color: #1164c3;
+}
+.button-red {
+  background-color: red;
+  color: var(--white);
+  border: none;
+}
+.button-red:hover {
+  background-color: rgb(210, 0, 0);
 }
 .no-button-style {
   border: none;
@@ -144,6 +156,11 @@ body {
 .button-group {
   display: flex;
   gap: 5px;
+}
+.control-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 .form {
   display: flex;

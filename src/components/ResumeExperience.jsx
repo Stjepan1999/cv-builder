@@ -1,5 +1,5 @@
 export const ResumeExperienceSection = ({ experienceData, formatDate }) => {
-  if (experienceData && experienceData.length > 0) {
+  if (experienceData[0].company) {
     return (
       <>
         <div className="resume-section">

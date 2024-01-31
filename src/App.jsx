@@ -8,6 +8,7 @@ import { SkillsForm } from './components/SkillsForm';
 import { ResumeExperienceSection } from './components/ResumeExperience';
 import { ResumeSkillsSection } from './components/ResumeSkills';
 import { ResumeEducationSection } from './components/ResumeEducation';
+import { exampleData } from './exampleData';
 import { useState } from 'react';
 import './style.css';
 import logo from './assets/images/cv.png';
@@ -15,36 +16,34 @@ import logo from './assets/images/cv.png';
 export const App = () => {
   const [userData, setUserData] = useState({
     personalInfo: {
-      firstName: 'John',
-      lastName: 'Smith',
-      professionalTitle: 'Web Developer',
-      summary:
-        'Creative problem solver and coding enthusiast specializing in crafting seamless user experiences. Proficient in HTML, CSS, JavaScript, and React. Passionate about transforming design concepts into interactive and visually stunning web applications. ',
+      firstName: '',
+      lastName: '',
+      professionalTitle: '',
+      summary: '',
     },
     contactInfo: {
-      email: 'john.smith@gmail.com',
-      phone: '+49 879 3123 983',
-      location: 'London, UK',
-      website: 'www.linkedin.com/johnsmith',
+      email: '',
+      phone: '',
+      location: '',
+      website: '',
     },
-    skills: ['JavaScript', 'HTML', 'CSS', 'Git', 'React', 'Node.js', 'SQL', 'Communication', 'Teamwork', 'Germany'],
+    skills: [],
     education: [
       {
-        school: 'University Of London',
-        degree: 'Master degree in computer science',
-        startDate: '2019-10-06',
-        endDate: '2024-05-17',
+        school: '',
+        degree: '',
+        startDate: '',
+        endDate: '',
       },
     ],
     experience: [
       {
-        company: 'Tech Innovators Ltd',
-        position: 'Senior Software Engineer',
-        startDate: '2018-06-01',
-        endDate: '2022-12-31',
-        location: 'San Francisco, CA',
-        description:
-          'Led a team of developers in creating cutting-edge software solutions. Collaborated with cross-functional teams to deliver high-quality products. Contributed to the development and optimization of scalable and efficient code.',
+        company: '',
+        position: '',
+        startDate: '',
+        endDate: '',
+        location: '',
+        description: '',
       },
     ],
   });
@@ -188,6 +187,10 @@ export const App = () => {
     return `${mm}/${yyyy}`;
   };
 
+  const loadExampleData = () => {
+    setUserData(exampleData);
+  };
+
   return (
     <>
       <div className="main">
@@ -197,8 +200,12 @@ export const App = () => {
             <h1 className="header">CV BUILDER</h1>
           </div>
           <div className="section-container">
-            <button>Load Example</button>
-            <button>Download PDF</button>
+            <div className="control-buttons">
+              <button className="button button-wide button-blue" onClick={loadExampleData}>
+                Load Example
+              </button>
+              <button className="button button-wide button-red">Download PDF</button>
+            </div>
           </div>
           <PersonalDetails {...userData.personalInfo} onChange={(e) => handleUserDataChange(e, 'personalInfo')} />
           <ContactInfo {...userData.contactInfo} onChange={(e) => handleUserDataChange(e, 'contactInfo')} />

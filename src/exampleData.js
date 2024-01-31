@@ -1,4 +1,4 @@
-export const userData = {
+export const exampleData = {
   personalInfo: {
     firstName: 'John',
     lastName: 'Smith',

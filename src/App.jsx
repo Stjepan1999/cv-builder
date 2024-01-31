@@ -12,6 +12,7 @@ import { exampleData } from './exampleData';
 import { useState } from 'react';
 import './style.css';
 import logo from './assets/images/cv.png';
+import jsPDF from 'jspdf';
 
 export const App = () => {
   const [userData, setUserData] = useState({
@@ -191,6 +192,13 @@ export const App = () => {
     setUserData(exampleData);
   };
 
+  const handleDownload = () => {
+    const content = new jsPDF('portrait', 'pt', 'a4');
+    content.html(document.querySelector('.resume-container')).then(() => {
+      content.save('resume.pdf');
+    });
+  };
+
   return (
     <>
       <div className="main">
@@ -201,10 +209,12 @@ export const App = () => {
           </div>
           <div className="section-container">
             <div className="control-buttons">
-              <button className="button button-wide button-blue" onClick={loadExampleData}>
+              <button className="button button-wide" onClick={loadExampleData}>
                 Load Example
               </button>
-              <button className="button button-wide button-red">Download PDF</button>
+              <button className="button button-wide button-red" onClick={handleDownload}>
+                Download PDF
+              </button>
             </div>
           </div>
           <PersonalDetails {...userData.personalInfo} onChange={(e) => handleUserDataChange(e, 'personalInfo')} />

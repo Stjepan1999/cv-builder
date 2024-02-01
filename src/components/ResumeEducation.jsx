@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const ResumeEducationSection = ({ education, formatDate }) => {
   if (education[0].school) {
     return (
@@ -17,4 +19,9 @@ export const ResumeEducationSection = ({ education, formatDate }) => {
       </div>
     );
   }
+};
+
+ResumeEducationSection.propTypes = {
+  education: PropTypes.array,
+  formatDate: PropTypes.func,
 };

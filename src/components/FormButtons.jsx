@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const FormButtons = ({ buttonText, editIndex, handleDelete, handleCancel, handleSave }) => {
   return editIndex === null ? (
     <button type="submit" className="button button-wide">
@@ -18,4 +20,12 @@ export const FormButtons = ({ buttonText, editIndex, handleDelete, handleCancel,
       </div>
     </div>
   );
+};
+
+FormButtons.propTypes = {
+  buttonText: PropTypes.string,
+  editIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([null])]),
+  handleDelete: PropTypes.func,
+  handleCancel: PropTypes.func,
+  handleSave: PropTypes.func,
 };

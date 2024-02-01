@@ -1,6 +1,7 @@
 import { InputContainer } from './InputContainer';
 import contactIcon from '../assets/images/phone-box.png';
 import '../style.css';
+import PropTypes from 'prop-types';
 
 export const ContactInfo = ({ email, phone, location, website, onChange }) => {
   return (
@@ -49,4 +50,12 @@ export const ContactInfo = ({ email, phone, location, website, onChange }) => {
       </form>
     </div>
   );
+};
+
+ContactInfo.propTypes = {
+  email: PropTypes.string,
+  phone: PropTypes.string,
+  location: PropTypes.string,
+  website: PropTypes.string,
+  onChange: PropTypes.func,
 };

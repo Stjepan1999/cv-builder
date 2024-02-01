@@ -1,6 +1,7 @@
 import { InputContainer } from './InputContainer';
 import { FormButtons } from './FormButtons';
 import '../style.css';
+import PropTypes from 'prop-types';
 import graduationCap from '../assets/images/graduation-cap.png';
 import editIcon from '../assets/images/edit.png';
 
@@ -76,4 +77,16 @@ export const EducationForm = ({
       </form>
     </div>
   );
+};
+
+EducationForm.propTypes = {
+  savedEducation: PropTypes.array,
+  educationFormData: PropTypes.object,
+  editIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([null])]),
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+  handleEdit: PropTypes.func,
+  handleSave: PropTypes.func,
+  handleDelete: PropTypes.func,
+  handleCancel: PropTypes.func,
 };

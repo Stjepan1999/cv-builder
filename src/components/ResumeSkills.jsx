@@ -1,4 +1,5 @@
 import '../style.css';
+import PropTypes from 'prop-types';
 
 export const ResumeSkillsSection = ({ skills }) => {
   if (skills && skills.length > 0) {
@@ -15,4 +16,8 @@ export const ResumeSkillsSection = ({ skills }) => {
       </div>
     );
   }
+};
+
+ResumeSkillsSection.propTypes = {
+  skills: PropTypes.array,
 };

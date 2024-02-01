@@ -1,18 +1,19 @@
 import '../style.css';
+import PropTypes from 'prop-types';
 import skills from '../assets/images/skills.png';
 import { InputContainer } from './InputContainer';
 import { FormButtons } from './FormButtons';
 
 export const SkillsForm = ({
-  onSubmit,
-  onChange,
+  skillFormData,
   savedSkills,
   editIndex,
+  onSubmit,
+  onChange,
   handleEdit,
   handleSave,
   handleDelete,
   handleCancel,
-  skillFormData,
 }) => {
   return (
     <div className="section-container">
@@ -48,4 +49,16 @@ export const SkillsForm = ({
       </form>
     </div>
   );
+};
+
+SkillsForm.propTypes = {
+  skillFormData: PropTypes.string,
+  savedSkills: PropTypes.array,
+  editIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([null])]),
+  onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
+  handleEdit: PropTypes.func,
+  handleSave: PropTypes.func,
+  handleDelete: PropTypes.func,
+  handleCancel: PropTypes.func,
 };

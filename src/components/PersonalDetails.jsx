@@ -1,5 +1,6 @@
 import { InputContainer } from './InputContainer';
 import personIcon from '../assets/images/person.png';
+import PropTypes from 'prop-types';
 import '../style.css';
 
 export const PersonalDetails = ({ firstName, lastName, professionalTitle, summary, onChange }) => {
@@ -49,4 +50,12 @@ export const PersonalDetails = ({ firstName, lastName, professionalTitle, summar
       </form>
     </div>
   );
+};
+
+PersonalDetails.propTypes = {
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  professionalTitle: PropTypes.string,
+  summary: PropTypes.string,
+  onChange: PropTypes.func,
 };

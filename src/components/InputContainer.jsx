@@ -1,4 +1,5 @@
 import '../style.css';
+import PropTypes from 'prop-types';
 
 export const InputContainer = ({ id, label, type, name, value, placeholder, onChange }) => {
   return (
@@ -30,4 +31,14 @@ export const InputContainer = ({ id, label, type, name, value, placeholder, onCh
       )}
     </div>
   );
+};
+
+InputContainer.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
 };

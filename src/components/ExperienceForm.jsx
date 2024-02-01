@@ -21,14 +21,15 @@ export const ExperienceForm = ({
         <img src={experienceIcon} className="section-icon education" alt="Briefcase icon" />
         Experience
       </h1>
-      {savedExperience.map((data, index) => (
-        <div key={index} className="section-saved-data">
-          <p>{data.company}</p>
-          <button onClick={(e) => handleEdit(e, index)} className="no-button-style">
-            <img src={editIcon} alt="Edit" className="button-image" />
-          </button>
-        </div>
-      ))}
+      {savedExperience[0].company &&
+        savedExperience.map((data, index) => (
+          <div key={index} className="section-saved-data">
+            <p>{data.company}</p>
+            <button onClick={(e) => handleEdit(e, index)} className="no-button-style">
+              <img src={editIcon} alt="Edit" className="button-image" />
+            </button>
+          </div>
+        ))}
 
       <form className="form" onSubmit={onSubmit}>
         <InputContainer
@@ -84,6 +85,7 @@ export const ExperienceForm = ({
           onChange={onChange}
         />
         <FormButtons
+          buttonText={'Experience'}
           editIndex={editIndex}
           handleSave={handleSave}
           handleDelete={handleDelete}

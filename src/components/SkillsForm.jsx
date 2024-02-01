@@ -39,6 +39,7 @@ export const SkillsForm = ({
           onChange={onChange}
         />
         <FormButtons
+          buttonText={'Skill'}
           editIndex={editIndex}
           handleSave={handleSave}
           handleDelete={handleDelete}

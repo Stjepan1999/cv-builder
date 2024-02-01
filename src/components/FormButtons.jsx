@@ -1,7 +1,7 @@
-export const FormButtons = ({ editIndex, handleDelete, handleCancel, handleSave }) => {
+export const FormButtons = ({ buttonText, editIndex, handleDelete, handleCancel, handleSave }) => {
   return editIndex === null ? (
     <button type="submit" className="button button-wide">
-      + Skill
+      + {buttonText}
     </button>
   ) : (
     <div className="edit-buttons-container">

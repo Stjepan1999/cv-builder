@@ -21,14 +21,15 @@ export const EducationForm = ({
         <img src={graduationCap} className="section-icon education" alt="Graduation cap" />
         Education
       </h1>
-      {savedEducation.map((data, index) => (
-        <div key={index} className="section-saved-data">
-          <p>{data.school}</p>
-          <button onClick={(e) => handleEdit(e, index)} className="no-button-style">
-            <img src={editIcon} alt="Edit" className="button-image" />
-          </button>
-        </div>
-      ))}
+      {savedEducation[0].school &&
+        savedEducation.map((data, index) => (
+          <div key={index} className="section-saved-data">
+            <p>{data.school}</p>
+            <button onClick={(e) => handleEdit(e, index)} className="no-button-style">
+              <img src={editIcon} alt="Edit" className="button-image" />
+            </button>
+          </div>
+        ))}
 
       <form className="form" onSubmit={onSubmit}>
         <InputContainer
@@ -66,6 +67,7 @@ export const EducationForm = ({
           onChange={onChange}
         />
         <FormButtons
+          buttonText={'Education'}
           editIndex={editIndex}
           handleSave={handleSave}
           handleDelete={handleDelete}

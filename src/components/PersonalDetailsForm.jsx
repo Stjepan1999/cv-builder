@@ -3,7 +3,7 @@ import personIcon from '../assets/images/person.png';
 import PropTypes from 'prop-types';
 import '../style.css';
 
-export const PersonalDetails = ({ firstName, lastName, professionalTitle, summary, onChange }) => {
+export const PersonalDetailsForm = ({ firstName, lastName, professionalTitle, summary, onChange }) => {
   return (
     <div className="section-container">
       <h1 className="section-header">
@@ -34,7 +34,7 @@ export const PersonalDetails = ({ firstName, lastName, professionalTitle, summar
           type="text"
           name="professionalTitle"
           id="professional-title"
-          placeholder="Software Developer"
+          placeholder="e.g., Web Developer"
           value={professionalTitle}
           onChange={onChange}
         />
@@ -43,7 +43,7 @@ export const PersonalDetails = ({ firstName, lastName, professionalTitle, summar
           type="textarea"
           name="summary"
           id="summary"
-          placeholder="Write summary about yourself"
+          placeholder="Write a brief summary about yourself"
           value={summary}
           onChange={onChange}
         />
@@ -52,7 +52,7 @@ export const PersonalDetails = ({ firstName, lastName, professionalTitle, summar
   );
 };
 
-PersonalDetails.propTypes = {
+PersonalDetailsForm.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   professionalTitle: PropTypes.string,

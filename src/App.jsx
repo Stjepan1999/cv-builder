@@ -1,13 +1,13 @@
-import { PersonalDetails } from './components/PersonalDetails';
-import { ContactInfo } from './components/ContactInfo';
-import { ResumeInfoSection } from './components/ResumeInfo';
-import { ResumeSummarySection } from './components/ResumeSummary';
+import { PersonalDetailsForm } from './components/PersonalDetailsForm';
+import { ContactInfoForm } from './components/ContactInfoForm';
+import { ResumeInfoSection } from './components/ResumeInfoSection';
+import { ResumeSummarySection } from './components/ResumeSummarySection';
 import { EducationForm } from './components/EducationForm';
 import { ExperienceForm } from './components/ExperienceForm';
 import { SkillsForm } from './components/SkillsForm';
-import { ResumeExperienceSection } from './components/ResumeExperience';
-import { ResumeSkillsSection } from './components/ResumeSkills';
-import { ResumeEducationSection } from './components/ResumeEducation';
+import { ResumeExperienceSection } from './components/ResumeExperienceSection';
+import { ResumeSkillsSection } from './components/ResumeSkillsSection';
+import { ResumeEducationSection } from './components/ResumeEducationSection';
 import { exampleData } from './exampleData';
 import { useState } from 'react';
 import './style.css';
@@ -217,8 +217,8 @@ export const App = () => {
               </button>
             </div>
           </div>
-          <PersonalDetails {...userData.personalInfo} onChange={(e) => handleUserDataChange(e, 'personalInfo')} />
-          <ContactInfo {...userData.contactInfo} onChange={(e) => handleUserDataChange(e, 'contactInfo')} />
+          <PersonalDetailsForm {...userData.personalInfo} onChange={(e) => handleUserDataChange(e, 'personalInfo')} />
+          <ContactInfoForm {...userData.contactInfo} onChange={(e) => handleUserDataChange(e, 'contactInfo')} />
           <EducationForm
             onChange={(e) => handleFormDataChange(e, 'education')}
             onSubmit={(e) => handleSubmitButton(e, 'education')}

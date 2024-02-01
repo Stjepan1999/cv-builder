@@ -38,7 +38,7 @@ export const ExperienceForm = ({
           id="company"
           label="Company"
           name="company"
-          placeholder="Enter company name"
+          placeholder="Enter Company Name"
           value={experienceFormData.company}
           onChange={onChange}
         />
@@ -47,7 +47,7 @@ export const ExperienceForm = ({
           id="position"
           label="Position"
           name="position"
-          placeholder="Enter position"
+          placeholder="Enter Position"
           value={experienceFormData.position}
           onChange={onChange}
         />
@@ -56,6 +56,7 @@ export const ExperienceForm = ({
           id="startDate"
           label="Start Date"
           name="startDate"
+          placeholder="MM/YYYY"
           value={experienceFormData.startDate}
           onChange={onChange}
         />
@@ -64,6 +65,7 @@ export const ExperienceForm = ({
           id="endDate"
           label="End Date"
           name="endDate"
+          placeholder="MM/YYYY"
           value={experienceFormData.endDate}
           onChange={onChange}
         />
@@ -81,7 +83,7 @@ export const ExperienceForm = ({
           id="description"
           label="Description"
           name="description"
-          placeholder="Main tasks"
+          placeholder="Describe main tasks and achievements"
           value={experienceFormData.description}
           onChange={onChange}
         />

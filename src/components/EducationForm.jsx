@@ -38,7 +38,7 @@ export const EducationForm = ({
           id="school"
           label="School"
           name="school"
-          placeholder="University of London"
+          placeholder="e.g., University of London"
           value={educationFormData.school}
           onChange={onChange}
         />
@@ -47,7 +47,7 @@ export const EducationForm = ({
           id="degree"
           label="Degree"
           name="degree"
-          placeholder="Master's Degree in Programming"
+          placeholder="e.g., Master's Degree in Computer Science"
           value={educationFormData.degree}
           onChange={onChange}
         />
@@ -56,6 +56,7 @@ export const EducationForm = ({
           id="startDate"
           label="Start Date"
           name="startDate"
+          placeholder="MM/YYYY"
           value={educationFormData.startDate}
           onChange={onChange}
         />
@@ -64,6 +65,7 @@ export const EducationForm = ({
           id="endDate"
           label="End Date"
           name="endDate"
+          placeholder="MM/YYYY"
           value={educationFormData.endDate}
           onChange={onChange}
         />

@@ -3,7 +3,7 @@ import contactIcon from '../assets/images/phone-box.png';
 import '../style.css';
 import PropTypes from 'prop-types';
 
-export const ContactInfo = ({ email, phone, location, website, onChange }) => {
+export const ContactInfoForm = ({ email, phone, location, website, onChange }) => {
   return (
     <div className="section-container">
       <h1>
@@ -34,7 +34,7 @@ export const ContactInfo = ({ email, phone, location, website, onChange }) => {
           id="location"
           label="Location"
           name="location"
-          placeholder="London, UK"
+          placeholder="e.g., London, UK"
           value={location}
           onChange={onChange}
         />
@@ -52,7 +52,7 @@ export const ContactInfo = ({ email, phone, location, website, onChange }) => {
   );
 };
 
-ContactInfo.propTypes = {
+ContactInfoForm.propTypes = {
   email: PropTypes.string,
   phone: PropTypes.string,
   location: PropTypes.string,

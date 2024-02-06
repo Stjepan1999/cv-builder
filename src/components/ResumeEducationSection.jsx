@@ -1,4 +1,6 @@
-export const ResumeEducationSection = ({ education, formatDate }) => {
+import { formatDate } from '../utils';
+
+export const ResumeEducationSection = ({ education }) => {
   if (education[0].school) {
     return (
       <div className="resume-section">

@@ -1,4 +1,6 @@
-export const ResumeExperienceSection = ({ experienceData, formatDate }) => {
+import { formatDate } from '../utils';
+
+export const ResumeExperienceSection = ({ experienceData }) => {
   if (experienceData[0].company) {
     return (
       <>

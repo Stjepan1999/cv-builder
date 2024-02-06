@@ -1,37 +1,74 @@
 import { Input } from './Input';
 import { FormButtons } from './FormButtons';
+import { useState } from 'react';
 import '../style.css';
 import graduationCap from '../assets/images/graduation-cap.png';
 import editIcon from '../assets/images/edit.png';
 
-export const EducationForm = ({
-  savedEducation,
-  educationFormData,
-  editIndex,
-  onChange,
-  onSubmit,
-  onEditClick,
-  onSaveClick,
-  onDeleteClick,
-  onCancelClick,
-}) => {
+export const EducationForm = ({ savedEducation, onSubmit, onSaveClick }) => {
+  const [educationFormData, setEducationFormData] = useState({
+    school: '',
+    degree: '',
+    startDate: '',
+    endDate: '',
+  });
+
+  const [editIndex, setEditIndex] = useState(null);
+
+  const handleFormDataChange = (e) => {
+    const { name, value } = e.target;
+    setEducationFormData({ ...educationFormData, [name]: value });
+  };
+
+  const handleSubmitClick = (e) => {
+    e.preventDefault();
+    onSubmit(educationFormData);
+    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+  };
+
+  const handleEditClick = (index) => {
+    setEducationFormData(savedEducation[index]);
+    setEditIndex(index);
+  };
+
+  const handleSaveClick = (e) => {
+    e.preventDefault();
+    const updatedData = [...savedEducation];
+    updatedData[editIndex] = educationFormData;
+    onSaveClick(updatedData);
+    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+    setEditIndex(null);
+  };
+
+  const handleDeleteClick = () => {
+    const updatedData = [...savedEducation];
+    updatedData.splice(editIndex, 1);
+    onSaveClick(updatedData);
+    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+    setEditIndex(null);
+  };
+
+  const handleCancelClick = () => {
+    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+    setEditIndex(null);
+  };
+
   return (
     <div className="section-container">
       <h1>
         <img src={graduationCap} className="section-icon education" alt="Graduation cap" />
         Education
       </h1>
-      {savedEducation[0].school &&
-        savedEducation.map((data, index) => (
-          <div key={index} className="section-saved-data">
-            <p>{data.school}</p>
-            <button onClick={(e) => onEditClick(e, index)} className="no-button-style">
-              <img src={editIcon} alt="Edit" className="button-image" />
-            </button>
-          </div>
-        ))}
+      {savedEducation.map((data, index) => (
+        <div key={index} className="section-saved-data">
+          <p>{data.school}</p>
+          <button onClick={(e) => handleEditClick(index)} className="no-button-style">
+            <img src={editIcon} alt="Edit" className="button-image" />
+          </button>
+        </div>
+      ))}
 
-      <form className="form" onSubmit={onSubmit}>
+      <form className="form" onSubmit={handleSubmitClick}>
         <Input
           type="text"
           id="school"
@@ -39,7 +76,7 @@ export const EducationForm = ({
           name="school"
           placeholder="e.g., University of London"
           value={educationFormData.school}
-          onChange={onChange}
+          onChange={handleFormDataChange}
         />
         <Input
           type="text"
@@ -48,7 +85,7 @@ export const EducationForm = ({
           name="degree"
           placeholder="e.g., Master's Degree in Computer Science"
           value={educationFormData.degree}
-          onChange={onChange}
+          onChange={handleFormDataChange}
         />
         <Input
           type="date"
@@ -57,7 +94,7 @@ export const EducationForm = ({
           name="startDate"
           placeholder="MM/YYYY"
           value={educationFormData.startDate}
-          onChange={onChange}
+          onChange={handleFormDataChange}
         />
         <Input
           type="date"
@@ -66,14 +103,14 @@ export const EducationForm = ({
           name="endDate"
           placeholder="MM/YYYY"
           value={educationFormData.endDate}
-          onChange={onChange}
+          onChange={handleFormDataChange}
         />
         <FormButtons
           buttonText={'Education'}
           editIndex={editIndex}
-          onSaveClick={onSaveClick}
-          onDeleteClick={onDeleteClick}
-          onCancelClick={onCancelClick}
+          onSaveClick={handleSaveClick}
+          onDeleteClick={handleDeleteClick}
+          onCancelClick={handleCancelClick}
         />
       </form>
     </div>

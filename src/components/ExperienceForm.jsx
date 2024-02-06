@@ -1,6 +1,5 @@
 import { InputContainer } from './InputContainer';
 import { FormButtons } from './FormButtons';
-import PropTypes from 'prop-types';
 import '../style.css';
 import experienceIcon from '../assets/images/briefcase.png';
 import editIcon from '../assets/images/edit.png';
@@ -11,10 +10,10 @@ export const ExperienceForm = ({
   experienceFormData,
   savedExperience,
   editIndex,
-  handleEdit,
-  handleSave,
-  handleDelete,
-  handleCancel,
+  onEditClick,
+  onSaveClick,
+  onDeleteClick,
+  onCancelClick,
 }) => {
   return (
     <div className="section-container">
@@ -26,7 +25,7 @@ export const ExperienceForm = ({
         savedExperience.map((data, index) => (
           <div key={index} className="section-saved-data">
             <p>{data.company}</p>
-            <button onClick={(e) => handleEdit(e, index)} className="no-button-style">
+            <button onClick={(e) => onEditClick(e, index)} className="no-button-style">
               <img src={editIcon} alt="Edit" className="button-image" />
             </button>
           </div>
@@ -90,23 +89,11 @@ export const ExperienceForm = ({
         <FormButtons
           buttonText={'Experience'}
           editIndex={editIndex}
-          handleSave={handleSave}
-          handleDelete={handleDelete}
-          handleCancel={handleCancel}
+          onSaveClick={onSaveClick}
+          onDeleteClick={onDeleteClick}
+          onCancelClick={onCancelClick}
         />
       </form>
     </div>
   );
-};
-
-ExperienceForm.propTypes = {
-  experienceFormData: PropTypes.object,
-  savedExperience: PropTypes.array,
-  editIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([null])]),
-  onChange: PropTypes.func,
-  onSubmit: PropTypes.func,
-  handleEdit: PropTypes.func,
-  handleSave: PropTypes.func,
-  handleDelete: PropTypes.func,
-  handleCancel: PropTypes.func,
 };

@@ -1,5 +1,4 @@
 import '../style.css';
-import PropTypes from 'prop-types';
 
 export const ResumeSummarySection = ({ summary }) => {
   if (summary) {
@@ -10,8 +9,4 @@ export const ResumeSummarySection = ({ summary }) => {
       </div>
     );
   }
-};
-
-ResumeSummarySection.propTypes = {
-  summary: PropTypes.string,
 };

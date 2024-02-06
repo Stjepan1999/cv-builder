@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 export const ResumeExperienceSection = ({ experienceData, formatDate }) => {
   if (experienceData[0].company) {
     return (
@@ -23,9 +21,4 @@ export const ResumeExperienceSection = ({ experienceData, formatDate }) => {
       </>
     );
   }
-};
-
-ResumeExperienceSection.propTypes = {
-  experienceData: PropTypes.array,
-  formatDate: PropTypes.func,
 };

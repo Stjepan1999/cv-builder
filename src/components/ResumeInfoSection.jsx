@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import emailIcon from '../assets/images/email.png';
 import locationIcon from '../assets/images/location.png';
 import phoneIcon from '../assets/images/phone.png';
@@ -33,9 +32,4 @@ export const ResumeInfoSection = ({ personalInfo, contactInfo }) => {
       </div>
     </div>
   );
-};
-
-ResumeInfoSection.propTypes = {
-  personalInfo: PropTypes.object,
-  contactInfo: PropTypes.object,
 };

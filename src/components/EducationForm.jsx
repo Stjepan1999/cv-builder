@@ -1,7 +1,6 @@
 import { InputContainer } from './InputContainer';
 import { FormButtons } from './FormButtons';
 import '../style.css';
-import PropTypes from 'prop-types';
 import graduationCap from '../assets/images/graduation-cap.png';
 import editIcon from '../assets/images/edit.png';
 
@@ -11,10 +10,10 @@ export const EducationForm = ({
   editIndex,
   onChange,
   onSubmit,
-  handleEdit,
-  handleSave,
-  handleDelete,
-  handleCancel,
+  onEditClick,
+  onSaveClick,
+  onDeleteClick,
+  onCancelClick,
 }) => {
   return (
     <div className="section-container">
@@ -26,7 +25,7 @@ export const EducationForm = ({
         savedEducation.map((data, index) => (
           <div key={index} className="section-saved-data">
             <p>{data.school}</p>
-            <button onClick={(e) => handleEdit(e, index)} className="no-button-style">
+            <button onClick={(e) => onEditClick(e, index)} className="no-button-style">
               <img src={editIcon} alt="Edit" className="button-image" />
             </button>
           </div>
@@ -72,23 +71,11 @@ export const EducationForm = ({
         <FormButtons
           buttonText={'Education'}
           editIndex={editIndex}
-          handleSave={handleSave}
-          handleDelete={handleDelete}
-          handleCancel={handleCancel}
+          onSaveClick={onSaveClick}
+          onDeleteClick={onDeleteClick}
+          onCancelClick={onCancelClick}
         />
       </form>
     </div>
   );
-};
-
-EducationForm.propTypes = {
-  savedEducation: PropTypes.array,
-  educationFormData: PropTypes.object,
-  editIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([null])]),
-  onChange: PropTypes.func,
-  onSubmit: PropTypes.func,
-  handleEdit: PropTypes.func,
-  handleSave: PropTypes.func,
-  handleDelete: PropTypes.func,
-  handleCancel: PropTypes.func,
 };

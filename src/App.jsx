@@ -87,7 +87,7 @@ export const App = () => {
     }
   };
 
-  const handleSubmitButton = (e, section) => {
+  const handleSubmitClick = (e, section) => {
     e.preventDefault();
     if (section === 'education') {
       setUserData((prevData) => ({ ...prevData, education: [...prevData.education, educationFormData] }));
@@ -101,25 +101,25 @@ export const App = () => {
     }
   };
 
-  const handleEducationEditButton = (e, index) => {
+  const handleEducationEditClick = (e, index) => {
     e.preventDefault();
     setEducationFormData(userData.education[index]);
     setEducationEditIndex(index);
   };
 
-  const handleExperienceEditButton = (e, index) => {
+  const handleExperienceEditClick = (e, index) => {
     e.preventDefault();
     setExperienceFormData(userData.experience[index]);
     setExperienceEditIndex(index);
   };
 
-  const handleSkillEditButton = (e, index) => {
+  const handleSkillEditClick = (e, index) => {
     e.preventDefault();
     setSkillFormData(userData.skills[index]);
     setSkillEditIndex(index);
   };
 
-  const handleSaveButton = (e, section) => {
+  const handleSaveClick = (e, section) => {
     e.preventDefault();
     if (section === 'education') {
       const updatedData = [...userData.education];
@@ -142,7 +142,7 @@ export const App = () => {
     }
   };
 
-  const handleDeleteButton = (e, section) => {
+  const handleDeleteClick = (e, section) => {
     e.preventDefault();
     if (section === 'education') {
       const updatedData = [...userData.education];
@@ -165,7 +165,7 @@ export const App = () => {
     }
   };
 
-  const handleCancelButton = (e, section) => {
+  const handleCancelClick = (e, section) => {
     e.preventDefault();
     if (section === 'education') {
       setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
@@ -221,33 +221,33 @@ export const App = () => {
           <ContactInfoForm {...userData.contactInfo} onChange={(e) => handleUserDataChange(e, 'contactInfo')} />
           <EducationForm
             onChange={(e) => handleFormDataChange(e, 'education')}
-            onSubmit={(e) => handleSubmitButton(e, 'education')}
-            handleEdit={handleEducationEditButton}
-            handleSave={(e) => handleSaveButton(e, 'education')}
-            handleDelete={(e) => handleDeleteButton(e, 'education')}
-            handleCancel={(e) => handleCancelButton(e, 'education')}
+            onSubmit={(e) => handleSubmitClick(e, 'education')}
+            onEditClick={handleEducationEditClick}
+            onSaveClick={(e) => handleSaveClick(e, 'education')}
+            onDeleteClick={(e) => handleDeleteClick(e, 'education')}
+            onCancelClick={(e) => handleCancelClick(e, 'education')}
             editIndex={educationEditIndex}
             savedEducation={userData.education}
             educationFormData={educationFormData}
           />
           <ExperienceForm
             onChange={(e) => handleFormDataChange(e, 'experience')}
-            onSubmit={(e) => handleSubmitButton(e, 'experience')}
-            handleEdit={handleExperienceEditButton}
-            handleSave={(e) => handleSaveButton(e, 'experience')}
-            handleDelete={(e) => handleDeleteButton(e, 'experience')}
-            handleCancel={(e) => handleCancelButton(e, 'experience')}
+            onSubmit={(e) => handleSubmitClick(e, 'experience')}
+            onEditClick={handleExperienceEditClick}
+            onSaveClick={(e) => handleSaveClick(e, 'experience')}
+            onDeleteClick={(e) => handleDeleteClick(e, 'experience')}
+            onCancelClick={(e) => handleCancelClick(e, 'experience')}
             editIndex={experienceEditIndex}
             experienceFormData={experienceFormData}
             savedExperience={userData.experience}
           />
           <SkillsForm
             onChange={(e) => handleFormDataChange(e, 'skills')}
-            onSubmit={(e) => handleSubmitButton(e, 'skills')}
-            handleEdit={handleSkillEditButton}
-            handleSave={(e) => handleSaveButton(e, 'skills')}
-            handleDelete={(e) => handleDeleteButton(e, 'skills')}
-            handleCancel={(e) => handleCancelButton(e, 'skills')}
+            onSubmit={(e) => handleSubmitClick(e, 'skills')}
+            onEditClick={handleSkillEditClick}
+            onSaveClick={(e) => handleSaveClick(e, 'skills')}
+            onDeleteClick={(e) => handleDeleteClick(e, 'skills')}
+            onCancelClick={(e) => handleCancelClick(e, 'skills')}
             editIndex={skillEditIndex}
             skillFormData={skillFormData}
             savedSkills={userData.skills}

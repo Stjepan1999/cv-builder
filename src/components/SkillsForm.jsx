@@ -1,5 +1,4 @@
 import '../style.css';
-import PropTypes from 'prop-types';
 import skills from '../assets/images/skills.png';
 import { InputContainer } from './InputContainer';
 import { FormButtons } from './FormButtons';
@@ -10,10 +9,10 @@ export const SkillsForm = ({
   editIndex,
   onSubmit,
   onChange,
-  handleEdit,
-  handleSave,
-  handleDelete,
-  handleCancel,
+  onEditClick,
+  onSaveClick,
+  onDeleteClick,
+  onCancelClick,
 }) => {
   return (
     <div className="section-container">
@@ -24,7 +23,7 @@ export const SkillsForm = ({
       </h1>
       <div key="index" className="skill-container">
         {savedSkills.map((skill, index) => (
-          <div className="skill" key={index} onClick={(e) => handleEdit(e, index)}>
+          <div className="skill" key={index} onClick={(e) => onEditClick(e, index)}>
             {skill}
           </div>
         ))}
@@ -42,23 +41,11 @@ export const SkillsForm = ({
         <FormButtons
           buttonText={'Skill'}
           editIndex={editIndex}
-          handleSave={handleSave}
-          handleDelete={handleDelete}
-          handleCancel={handleCancel}
+          onSaveClick={onSaveClick}
+          onDeleteClick={onDeleteClick}
+          onCancelClick={onCancelClick}
         />
       </form>
     </div>
   );
-};
-
-SkillsForm.propTypes = {
-  skillFormData: PropTypes.string,
-  savedSkills: PropTypes.array,
-  editIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([null])]),
-  onSubmit: PropTypes.func,
-  onChange: PropTypes.func,
-  handleEdit: PropTypes.func,
-  handleSave: PropTypes.func,
-  handleDelete: PropTypes.func,
-  handleCancel: PropTypes.func,
 };

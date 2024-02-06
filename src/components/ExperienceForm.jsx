@@ -1,4 +1,5 @@
-import { InputContainer } from './InputContainer';
+import { Input } from './Input';
+import { Textarea } from './Textarea';
 import { FormButtons } from './FormButtons';
 import '../style.css';
 import experienceIcon from '../assets/images/briefcase.png';
@@ -32,7 +33,7 @@ export const ExperienceForm = ({
         ))}
 
       <form className="form" onSubmit={onSubmit}>
-        <InputContainer
+        <Input
           type="text"
           id="company"
           label="Company"
@@ -41,7 +42,7 @@ export const ExperienceForm = ({
           value={experienceFormData.company}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           type="text"
           id="position"
           label="Position"
@@ -50,7 +51,7 @@ export const ExperienceForm = ({
           value={experienceFormData.position}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           type="date"
           id="startDate"
           label="Start Date"
@@ -59,7 +60,7 @@ export const ExperienceForm = ({
           value={experienceFormData.startDate}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           type="date"
           id="endDate"
           label="End Date"
@@ -68,7 +69,7 @@ export const ExperienceForm = ({
           value={experienceFormData.endDate}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           type="text"
           id="location"
           label="Location"
@@ -77,7 +78,7 @@ export const ExperienceForm = ({
           value={experienceFormData.location}
           onChange={onChange}
         />
-        <InputContainer
+        <Textarea
           type="textarea"
           id="description"
           label="Description"

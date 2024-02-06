@@ -1,4 +1,4 @@
-import { InputContainer } from './InputContainer';
+import { Input } from './Input';
 import contactIcon from '../assets/images/phone-box.png';
 import '../style.css';
 
@@ -10,7 +10,7 @@ export const ContactInfoForm = ({ email, phone, location, website, onChange }) =
         Contact Info
       </h1>
       <form className="form">
-        <InputContainer
+        <Input
           type="text"
           id="email"
           label="Email"
@@ -19,7 +19,7 @@ export const ContactInfoForm = ({ email, phone, location, website, onChange }) =
           value={email}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           type="tel"
           id="phone"
           label="Phone"
@@ -28,7 +28,7 @@ export const ContactInfoForm = ({ email, phone, location, website, onChange }) =
           value={phone}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           type="text"
           id="location"
           label="Location"
@@ -37,7 +37,7 @@ export const ContactInfoForm = ({ email, phone, location, website, onChange }) =
           value={location}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           type="text"
           id="website"
           label="Website"

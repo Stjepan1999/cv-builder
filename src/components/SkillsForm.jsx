@@ -1,6 +1,6 @@
 import '../style.css';
 import skills from '../assets/images/skills.png';
-import { InputContainer } from './InputContainer';
+import { Input } from './Input';
 import { FormButtons } from './FormButtons';
 
 export const SkillsForm = ({
@@ -29,7 +29,7 @@ export const SkillsForm = ({
         ))}
       </div>
       <form className="form" onSubmit={onSubmit}>
-        <InputContainer
+        <Input
           type="Skill"
           id="skill"
           label="Skill"

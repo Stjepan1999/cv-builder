@@ -1,4 +1,5 @@
-import { InputContainer } from './InputContainer';
+import { Input } from './Input';
+import { Textarea } from './Textarea';
 import personIcon from '../assets/images/person.png';
 import '../style.css';
 
@@ -10,7 +11,7 @@ export const PersonalDetailsForm = ({ firstName, lastName, professionalTitle, su
         Personal Details
       </h1>
       <form className="form">
-        <InputContainer
+        <Input
           label="First Name"
           type="text"
           id="first-name"
@@ -19,7 +20,7 @@ export const PersonalDetailsForm = ({ firstName, lastName, professionalTitle, su
           value={firstName}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           label="Last Name"
           type="text"
           name="lastName"
@@ -28,7 +29,7 @@ export const PersonalDetailsForm = ({ firstName, lastName, professionalTitle, su
           value={lastName}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           label="Professional Title"
           type="text"
           name="professionalTitle"
@@ -37,7 +38,7 @@ export const PersonalDetailsForm = ({ firstName, lastName, professionalTitle, su
           value={professionalTitle}
           onChange={onChange}
         />
-        <InputContainer
+        <Textarea
           label="Summary"
           type="textarea"
           name="summary"

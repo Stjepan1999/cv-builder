@@ -1,4 +1,4 @@
-import { InputContainer } from './InputContainer';
+import { Input } from './Input';
 import { FormButtons } from './FormButtons';
 import '../style.css';
 import graduationCap from '../assets/images/graduation-cap.png';
@@ -32,7 +32,7 @@ export const EducationForm = ({
         ))}
 
       <form className="form" onSubmit={onSubmit}>
-        <InputContainer
+        <Input
           type="text"
           id="school"
           label="School"
@@ -41,7 +41,7 @@ export const EducationForm = ({
           value={educationFormData.school}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           type="text"
           id="degree"
           label="Degree"
@@ -50,7 +50,7 @@ export const EducationForm = ({
           value={educationFormData.degree}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           type="date"
           id="startDate"
           label="Start Date"
@@ -59,7 +59,7 @@ export const EducationForm = ({
           value={educationFormData.startDate}
           onChange={onChange}
         />
-        <InputContainer
+        <Input
           type="date"
           id="endDate"
           label="End Date"

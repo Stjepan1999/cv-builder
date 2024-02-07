@@ -1,98 +1,85 @@
+import { useState } from 'react';
 import { Input } from './Input';
 import { Textarea } from './Textarea';
 import { FormButtons } from './FormButtons';
 import '../style.css';
 import experienceIcon from '../assets/images/briefcase.png';
 import editIcon from '../assets/images/edit.png';
+import { useForm } from 'react-hook-form';
+import { InputContainer } from './InputContainer';
 
-export const ExperienceForm = ({
-  onSubmit,
-  onChange,
-  experienceFormData,
-  savedExperience,
-  editIndex,
-  onEditClick,
-  onSaveClick,
-  onDeleteClick,
-  onCancelClick,
-}) => {
+export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }) => {
+  const { register, handleSubmit, reset, watch } = useForm();
+
+  const [editIndex, setEditIndex] = useState(null);
+
+  const initialExperienceForm = {
+    company: '',
+    position: '',
+    startDate: '',
+    endDate: '',
+    location: '',
+    description: '',
+  };
+
+  const handleSubmitClick = (data) => {
+    onSubmitSuccess(data);
+    reset(initialExperienceForm);
+  };
+
+  const handleEditClick = (index) => {
+    reset(savedExperience[index]);
+    setEditIndex(index);
+  };
+
+  const handleSaveClick = () => {
+    onSaveClick(savedExperience.filter((item, index) => (index === editIndex ? watch() : item)));
+    reset(initialExperienceForm);
+  };
+
+  const handleDeleteClick = () => {
+    onSaveClick(savedExperience.filter((item, index) => index !== editIndex));
+    reset(initialExperienceForm);
+  };
+
+  const handleCancelClick = () => {
+    setEditIndex(null);
+    reset(initialExperienceForm);
+  };
   return (
     <div className="section-container">
       <h1>
         <img src={experienceIcon} className="section-icon education" alt="Briefcase icon" />
         Experience
       </h1>
-      {savedExperience[0].company &&
-        savedExperience.map((data, index) => (
-          <div key={index} className="section-saved-data">
-            <p>{data.company}</p>
-            <button onClick={(e) => onEditClick(e, index)} className="no-button-style">
-              <img src={editIcon} alt="Edit" className="button-image" />
-            </button>
-          </div>
-        ))}
+      {savedExperience.map((data, index) => (
+        <div key={index} className="section-saved-data">
+          <p>{data.company}</p>
+          <button onClick={() => handleEditClick(index)} className="no-button-style">
+            <img src={editIcon} alt="Edit" className="button-image" />
+          </button>
+        </div>
+      ))}
 
-      <form className="form" onSubmit={onSubmit}>
-        <Input
-          type="text"
-          id="company"
-          label="Company"
-          name="company"
-          placeholder="Enter Company Name"
-          value={experienceFormData.company}
-          onChange={onChange}
-        />
-        <Input
-          type="text"
-          id="position"
-          label="Position"
-          name="position"
-          placeholder="Enter Position"
-          value={experienceFormData.position}
-          onChange={onChange}
-        />
-        <Input
-          type="date"
-          id="startDate"
-          label="Start Date"
-          name="startDate"
-          placeholder="MM/YYYY"
-          value={experienceFormData.startDate}
-          onChange={onChange}
-        />
-        <Input
-          type="date"
-          id="endDate"
-          label="End Date"
-          name="endDate"
-          placeholder="MM/YYYY"
-          value={experienceFormData.endDate}
-          onChange={onChange}
-        />
-        <Input
-          type="text"
-          id="location"
-          label="Location"
-          name="location"
-          placeholder="Enter location"
-          value={experienceFormData.location}
-          onChange={onChange}
-        />
+      <form className="form" onSubmit={handleSubmit(handleSubmitClick)}>
+        <InputContainer type="text" id="company" label="Company" placeholder="Enter Company Name" register={register} />
+        <InputContainer type="text" id="position" label="Position" placeholder="Enter Position" register={register} />
+        <InputContainer type="date" id="startDate" label="Start Date" placeholder="MM/YYYY" register={register} />
+        <InputContainer type="date" id="endDate" label="End Date" placeholder="MM/YYYY" register={register} />
+        <InputContainer type="text" id="location" label="Location" placeholder="Enter location" register={register} />
         <Textarea
           type="textarea"
           id="description"
           label="Description"
-          name="description"
           placeholder="Describe main tasks and achievements"
-          value={experienceFormData.description}
-          onChange={onChange}
+          register={register}
         />
         <FormButtons
           buttonText={'Experience'}
           editIndex={editIndex}
-          onSaveClick={onSaveClick}
-          onDeleteClick={onDeleteClick}
-          onCancelClick={onCancelClick}
+          onSaveClick={handleSaveClick}
+          onDeleteClick={handleDeleteClick}
+          onCancelClick={handleCancelClick}
         />
       </form>
     </div>

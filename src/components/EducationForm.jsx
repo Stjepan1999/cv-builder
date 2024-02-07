@@ -4,53 +4,46 @@ import { useState } from 'react';
 import '../style.css';
 import graduationCap from '../assets/images/graduation-cap.png';
 import editIcon from '../assets/images/edit.png';
+import { useForm } from 'react-hook-form';
+import { InputContainer } from './InputContainer';
 
-export const EducationForm = ({ savedEducation, onSubmit, onSaveClick }) => {
-  const [educationFormData, setEducationFormData] = useState({
+export const EducationForm = ({ savedEducation, onSubmitSuccess, onSaveClick }) => {
+  const { register, handleSubmit, reset, watch } = useForm();
+
+  const [editIndex, setEditIndex] = useState(null);
+
+  const initialEducationForm = {
     school: '',
     degree: '',
     startDate: '',
     endDate: '',
-  });
-
-  const [editIndex, setEditIndex] = useState(null);
-
-  const handleFormDataChange = (e) => {
-    const { name, value } = e.target;
-    setEducationFormData({ ...educationFormData, [name]: value });
   };
 
-  const handleSubmitClick = (e) => {
-    e.preventDefault();
-    onSubmit(educationFormData);
-    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+  const handleSubmitClick = (data) => {
+    onSubmitSuccess(data);
+    reset(initialEducationForm);
   };
 
   const handleEditClick = (index) => {
-    setEducationFormData(savedEducation[index]);
+    reset(savedEducation[index]);
     setEditIndex(index);
   };
 
-  const handleSaveClick = (e) => {
-    e.preventDefault();
-    const updatedData = [...savedEducation];
-    updatedData[editIndex] = educationFormData;
-    onSaveClick(updatedData);
-    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+  const handleSaveClick = () => {
+    onSaveClick(savedEducation.map((item, index) => (index === editIndex ? watch() : item)));
     setEditIndex(null);
+    reset(initialEducationForm);
   };
 
   const handleDeleteClick = () => {
-    const updatedData = [...savedEducation];
-    updatedData.splice(editIndex, 1);
-    onSaveClick(updatedData);
-    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
+    onSaveClick(savedEducation.filter((item, index) => index !== editIndex));
     setEditIndex(null);
+    reset(initialEducationForm);
   };
 
   const handleCancelClick = () => {
-    setEducationFormData({ school: '', degree: '', startDate: '', endDate: '' });
     setEditIndex(null);
+    reset(initialEducationForm);
   };
 
   return (
@@ -62,49 +55,30 @@ export const EducationForm = ({ savedEducation, onSubmit, onSaveClick }) => {
       {savedEducation.map((data, index) => (
         <div key={index} className="section-saved-data">
           <p>{data.school}</p>
-          <button onClick={(e) => handleEditClick(index)} className="no-button-style">
+          <button onClick={() => handleEditClick(index)} className="no-button-style">
             <img src={editIcon} alt="Edit" className="button-image" />
           </button>
         </div>
       ))}
 
-      <form className="form" onSubmit={handleSubmitClick}>
-        <Input
-          type="text"
+      <form className="form" onSubmit={handleSubmit(handleSubmitClick)}>
+        <InputContainer
           id="school"
           label="School"
-          name="school"
-          placeholder="e.g., University of London"
-          value={educationFormData.school}
-          onChange={handleFormDataChange}
-        />
-        <Input
           type="text"
+          placeholder="e.g., University of London"
+          register={register}
+        />
+        <InputContainer
           id="degree"
           label="Degree"
-          name="degree"
+          type="text"
           placeholder="e.g., Master's Degree in Computer Science"
-          value={educationFormData.degree}
-          onChange={handleFormDataChange}
+          register={register}
         />
-        <Input
-          type="date"
-          id="startDate"
-          label="Start Date"
-          name="startDate"
-          placeholder="MM/YYYY"
-          value={educationFormData.startDate}
-          onChange={handleFormDataChange}
-        />
-        <Input
-          type="date"
-          id="endDate"
-          label="End Date"
-          name="endDate"
-          placeholder="MM/YYYY"
-          value={educationFormData.endDate}
-          onChange={handleFormDataChange}
-        />
+        <InputContainer id="startDate" label="Start Date" type="date" placeholder="MM/YYYY" register={register} />
+        <InputContainer id="endDate" label="End Date" type="date" placeholder="MM/YYYY" register={register} />
+
         <FormButtons
           buttonText={'Education'}
           editIndex={editIndex}

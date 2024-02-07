@@ -1,6 +1,6 @@
 import '../style.css';
 
-export const Textarea = ({ id, label, type, name, value, placeholder, onChange }) => {
+export const Textarea = ({ id, label, type, name, placeholder, register }) => {
   return (
     <div className="input-container">
       <label htmlFor={id} className="label-text">
@@ -11,9 +11,9 @@ export const Textarea = ({ id, label, type, name, value, placeholder, onChange }
         type={type}
         id={id}
         name={name}
-        value={value}
         placeholder={placeholder}
-        onChange={onChange}
+        {...register[id]}
+        required
       ></textarea>
     </div>
   );

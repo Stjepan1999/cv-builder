@@ -30,30 +30,11 @@ export const App = () => {
     },
     skills: [],
     education: [],
-    experience: [
-      {
-        company: '',
-        position: '',
-        startDate: '',
-        endDate: '',
-        location: '',
-        description: '',
-      },
-    ],
-  });
-
-  const [experienceFormData, setExperienceFormData] = useState({
-    company: '',
-    position: '',
-    startDate: '',
-    endDate: '',
-    location: '',
-    description: '',
+    experience: [],
   });
 
   const [skillFormData, setSkillFormData] = useState('');
 
-  const [experienceEditIndex, setExperienceEditIndex] = useState(null);
   const [skillEditIndex, setSkillEditIndex] = useState(null);
 
   const handleUserDataChange = (e, section) => {
@@ -63,9 +44,7 @@ export const App = () => {
 
   const handleFormDataChange = (e, section) => {
     const { name, value } = e.target;
-    if (section === 'experience') {
-      setExperienceFormData({ ...experienceFormData, [name]: value });
-    } else if (section === 'skills') {
+    if (section === 'skills') {
       setSkillFormData(value);
     }
   };
@@ -78,21 +57,20 @@ export const App = () => {
     setUserData((prevData) => ({ ...prevData, education: formData }));
   };
 
+  const handleExperienceSubmit = (formData) => {
+    setUserData((prevData) => ({ ...prevData, experience: { ...prevData.experience, formData } }));
+  };
+
+  const handleExperienceSaveClick = (formData) => {
+    setUserData((prevData) => ({ ...prevData, experience: formData }));
+  };
+
   const handleSubmitClick = (e, section) => {
     e.preventDefault();
-    if (section === 'experience') {
-      setUserData((prevData) => ({ ...prevData, experience: [...prevData.experience, experienceFormData] }));
-      setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
-    } else if (section === 'skills') {
+    if (section === 'skills') {
       setUserData((prevData) => ({ ...prevData, skills: [...prevData.skills, skillFormData] }));
       setSkillFormData('');
     }
-  };
-
-  const handleExperienceEditClick = (e, index) => {
-    e.preventDefault();
-    setExperienceFormData(userData.experience[index]);
-    setExperienceEditIndex(index);
   };
 
   const handleSkillEditClick = (e, index) => {
@@ -103,13 +81,7 @@ export const App = () => {
 
   const handleSaveClick = (e, section) => {
     e.preventDefault();
-    if (section === 'experience') {
-      const updatedData = [...userData.experience];
-      updatedData[experienceEditIndex] = experienceFormData;
-      setUserData((prevData) => ({ ...prevData, experience: updatedData }));
-      setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
-      setExperienceEditIndex(null);
-    } else if (section === 'skills') {
+    if (section === 'skills') {
       const updatedData = [...userData.skills];
       updatedData[skillEditIndex] = skillFormData;
       setUserData((prevData) => ({ ...prevData, skills: updatedData }));
@@ -119,13 +91,7 @@ export const App = () => {
   };
 
   const handleDeleteClick = (e, section) => {
-    if (section === 'experience') {
-      const updatedData = [...userData.experience];
-      updatedData.splice(experienceEditIndex, 1);
-      setUserData((prevData) => ({ ...prevData, experience: updatedData }));
-      setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
-      setExperienceEditIndex(null);
-    } else if (section === 'skills') {
+    if (section === 'skills') {
       const updatedData = [...userData.skills];
       updatedData.splice(skillEditIndex, 1);
       setUserData((prevData) => ({ ...prevData, skills: updatedData }));
@@ -135,10 +101,7 @@ export const App = () => {
   };
 
   const handleCancelClick = (e, section) => {
-    if (section === 'experience') {
-      setExperienceFormData({ company: '', position: '', startDate: '', endDate: '', location: '', description: '' });
-      setExperienceEditIndex(null);
-    } else if (section === 'skills') {
+    if (section === 'skills') {
       setSkillFormData('');
       setSkillEditIndex(null);
     }
@@ -176,19 +139,13 @@ export const App = () => {
           <PersonalDetailsForm {...userData.personalInfo} onChange={(e) => handleUserDataChange(e, 'personalInfo')} />
           <ContactInfoForm {...userData.contactInfo} onChange={(e) => handleUserDataChange(e, 'contactInfo')} />
           <EducationForm
-            onSubmit={handleEducationSubmit}
-            savedEducation={userData.education}
+            onSubmitSuccess={handleEducationSubmit}
             onSaveClick={handleEducationSaveClick}
+            savedEducation={userData.education}
           />
           <ExperienceForm
-            onChange={(e) => handleFormDataChange(e, 'experience')}
-            onSubmit={(e) => handleSubmitClick(e, 'experience')}
-            onEditClick={handleExperienceEditClick}
-            onSaveClick={(e) => handleSaveClick(e, 'experience')}
-            onDeleteClick={(e) => handleDeleteClick(e, 'experience')}
-            onCancelClick={(e) => handleCancelClick(e, 'experience')}
-            editIndex={experienceEditIndex}
-            experienceFormData={experienceFormData}
+            onSubmitSuccess={handleExperienceSubmit}
+            onSaveClick={handleExperienceSaveClick}
             savedExperience={userData.experience}
           />
           <SkillsForm

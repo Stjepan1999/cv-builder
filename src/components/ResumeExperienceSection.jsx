@@ -1,7 +1,7 @@
 import { formatDate } from '../utils';
 
 export const ResumeExperienceSection = ({ experienceData }) => {
-  if (experienceData[0].company) {
+  if (experienceData) {
     return (
       <>
         <div className="resume-section">

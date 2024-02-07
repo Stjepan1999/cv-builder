@@ -113,7 +113,7 @@ body {
   background-color: var(--background-color);
 }
 .button-wide {
-  width: 40%;
+  width: 30%;
   align-self: center;
   border: 1px solid var(--color-gray);
 }

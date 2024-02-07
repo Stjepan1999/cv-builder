@@ -58,9 +58,14 @@ export const App = () => {
     setUserData((prevData) => ({ ...prevData, [section]: formData }));
   };
 
-  const loadExampleData = () => {
+  const handleLoadExampleClick = () => {
     setUserData(exampleData);
     reset(exampleData.personalInfo);
+  };
+
+  const handleClearClick = () => {
+    setUserData(initialUserData);
+    reset(initialUserData.personalInfo);
   };
 
   const handleDownload = () => {
@@ -80,8 +85,11 @@ export const App = () => {
           </div>
           <div className="section-container">
             <div className="control-buttons">
-              <button className="button button-wide" onClick={loadExampleData}>
+              <button className="button button-wide" onClick={handleLoadExampleClick}>
                 Load Example
+              </button>
+              <button className="button button-wide" onClick={handleClearClick}>
+                Clear
               </button>
               <button className="button button-wide button-red" onClick={handleDownload}>
                 Download PDF

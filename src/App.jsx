@@ -10,10 +10,10 @@ import { ResumeSkillsSection } from './components/ResumeSkillsSection';
 import { ResumeEducationSection } from './components/ResumeEducationSection';
 import { exampleData } from './exampleData';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import './style.css';
 import logo from './assets/images/cv.png';
 import jsPDF from 'jspdf';
-import { useForm } from 'react-hook-form';
 
 export const App = () => {
   const { register, watch, reset } = useForm();
@@ -45,20 +45,9 @@ export const App = () => {
     summary: watch('summary'),
   };
 
-  const [skillFormData, setSkillFormData] = useState('');
-
-  const [skillEditIndex, setSkillEditIndex] = useState(null);
-
   const handleUserDataChange = (e, section) => {
     const { name, value } = e.target;
     setUserData((prevData) => ({ ...prevData, [section]: { ...prevData[section], [name]: value } }));
-  };
-
-  const handleFormDataChange = (e, section) => {
-    const { name, value } = e.target;
-    if (section === 'skills') {
-      setSkillFormData(value);
-    }
   };
 
   const handleEducationSubmit = (formData) => {
@@ -77,46 +66,12 @@ export const App = () => {
     setUserData((prevData) => ({ ...prevData, experience: formData }));
   };
 
-  const handleSubmitClick = (e, section) => {
-    e.preventDefault();
-    if (section === 'skills') {
-      setUserData((prevData) => ({ ...prevData, skills: [...prevData.skills, skillFormData] }));
-      setSkillFormData('');
-    }
+  const handleSkillSubmit = (formData) => {
+    setUserData((prevData) => ({ ...prevData, skills: [...prevData.skills, formData] }));
   };
 
-  const handleSkillEditClick = (e, index) => {
-    e.preventDefault();
-    setSkillFormData(userData.skills[index]);
-    setSkillEditIndex(index);
-  };
-
-  const handleSaveClick = (e, section) => {
-    e.preventDefault();
-    if (section === 'skills') {
-      const updatedData = [...userData.skills];
-      updatedData[skillEditIndex] = skillFormData;
-      setUserData((prevData) => ({ ...prevData, skills: updatedData }));
-      setSkillFormData('');
-      setSkillEditIndex(null);
-    }
-  };
-
-  const handleDeleteClick = (e, section) => {
-    if (section === 'skills') {
-      const updatedData = [...userData.skills];
-      updatedData.splice(skillEditIndex, 1);
-      setUserData((prevData) => ({ ...prevData, skills: updatedData }));
-      setSkillFormData('');
-      setSkillEditIndex(null);
-    }
-  };
-
-  const handleCancelClick = (e, section) => {
-    if (section === 'skills') {
-      setSkillFormData('');
-      setSkillEditIndex(null);
-    }
+  const handleSkillSaveClick = (formData) => {
+    setUserData((prevData) => ({ ...prevData, skills: formData }));
   };
 
   const loadExampleData = () => {
@@ -162,14 +117,8 @@ export const App = () => {
             savedExperience={userData.experience}
           />
           <SkillsForm
-            onChange={(e) => handleFormDataChange(e, 'skills')}
-            onSubmit={(e) => handleSubmitClick(e, 'skills')}
-            onEditClick={handleSkillEditClick}
-            onSaveClick={(e) => handleSaveClick(e, 'skills')}
-            onDeleteClick={(e) => handleDeleteClick(e, 'skills')}
-            onCancelClick={(e) => handleCancelClick(e, 'skills')}
-            editIndex={skillEditIndex}
-            skillFormData={skillFormData}
+            onSubmitSuccess={handleSkillSubmit}
+            onSaveClick={handleSkillSaveClick}
             savedSkills={userData.skills}
           />
         </div>

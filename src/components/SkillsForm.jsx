@@ -12,7 +12,7 @@ export const SkillsForm = ({ savedSkills, onSubmitSuccess, onSaveClick }) => {
   const [editIndex, setEditIndex] = useState(null);
 
   const handleSubmitClick = (data) => {
-    onSubmitSuccess(data.skill);
+    onSubmitSuccess(data.skill, 'skills');
     reset();
   };
 
@@ -22,13 +22,15 @@ export const SkillsForm = ({ savedSkills, onSubmitSuccess, onSaveClick }) => {
   };
 
   const handleSaveClick = () => {
-    onSaveClick(savedSkills.map((item, index) => (index === editIndex ? watch('skill') : item)));
+    const updatedData = savedSkills.map((item, index) => (index === editIndex ? watch('skill') : item));
+    onSaveClick(updatedData, 'skills');
     setEditIndex(null);
     reset({ skill: '' });
   };
 
   const handleDeleteClick = () => {
-    onSaveClick(savedSkills.filter((item, index) => index !== editIndex));
+    const updatedData = savedSkills.filter((item, index) => index !== editIndex);
+    onSaveClick(updatedData, 'skills');
     setEditIndex(null);
     reset({ skill: '' });
   };

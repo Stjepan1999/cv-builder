@@ -23,7 +23,7 @@ export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }
   };
 
   const handleSubmitClick = (data) => {
-    onSubmitSuccess(data);
+    onSubmitSuccess(data, 'experience');
     reset(initialExperienceForm);
   };
 
@@ -33,12 +33,16 @@ export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }
   };
 
   const handleSaveClick = () => {
-    onSaveClick(savedExperience.filter((item, index) => (index === editIndex ? watch() : item)));
+    const updatedData = savedExperience.filter((item, index) => (index === editIndex ? watch() : item));
+    onSaveClick(updatedData, 'experience');
+    setEditIndex(null);
     reset(initialExperienceForm);
   };
 
   const handleDeleteClick = () => {
-    onSaveClick(savedExperience.filter((item, index) => index !== editIndex));
+    const updatedData = savedExperience.filter((item, index) => index !== editIndex);
+    onSaveClick(updatedData, 'experience');
+    setEditIndex(null);
     reset(initialExperienceForm);
   };
 
@@ -46,6 +50,7 @@ export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }
     setEditIndex(null);
     reset(initialExperienceForm);
   };
+
   return (
     <div className="section-container">
       <h1>

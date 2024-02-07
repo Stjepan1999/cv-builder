@@ -20,7 +20,7 @@ export const EducationForm = ({ savedEducation, onSubmitSuccess, onSaveClick }) 
   };
 
   const handleSubmitClick = (data) => {
-    onSubmitSuccess(data);
+    onSubmitSuccess(data, 'education');
     reset(initialEducationForm);
   };
 
@@ -30,13 +30,15 @@ export const EducationForm = ({ savedEducation, onSubmitSuccess, onSaveClick }) 
   };
 
   const handleSaveClick = () => {
-    onSaveClick(savedEducation.map((item, index) => (index === editIndex ? watch() : item)));
+    const updatedData = savedEducation.map((item, index) => (index === editIndex ? watch() : item));
+    onSaveClick(updatedData, 'education');
     setEditIndex(null);
     reset(initialEducationForm);
   };
 
   const handleDeleteClick = () => {
-    onSaveClick(savedEducation.filter((item, index) => index !== editIndex));
+    const updatedData = savedEducation.filter((item, index) => index !== editIndex);
+    onSaveClick(updatedData, 'education');
     setEditIndex(null);
     reset(initialEducationForm);
   };

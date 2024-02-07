@@ -50,16 +50,16 @@ export const App = () => {
     setUserData((prevData) => ({ ...prevData, [section]: { ...prevData[section], [name]: value } }));
   };
 
-  const handleEducationSubmit = (formData) => {
-    setUserData((prevData) => ({ ...prevData, education: [...prevData.education, formData] }));
+  const handleDataSubmit = (formData, section) => {
+    setUserData((prevData) => ({ ...prevData, [section]: [...prevData.education, formData] }));
   };
 
-  const handleEducationSaveClick = (formData) => {
-    setUserData((prevData) => ({ ...prevData, education: formData }));
+  const handleDataSaveClick = (formData, section) => {
+    setUserData((prevData) => ({ ...prevData, [section]: formData }));
   };
 
   const handleExperienceSubmit = (formData) => {
-    setUserData((prevData) => ({ ...prevData, experience: { ...prevData.experience, formData } }));
+    setUserData((prevData) => ({ ...prevData, experience: [...prevData.experience, formData] }));
   };
 
   const handleExperienceSaveClick = (formData) => {
@@ -107,18 +107,18 @@ export const App = () => {
           <PersonalDetailsForm {...userData.personalInfo} register={register} />
           <ContactInfoForm {...userData.contactInfo} onChange={(e) => handleUserDataChange(e, 'contactInfo')} />
           <EducationForm
-            onSubmitSuccess={handleEducationSubmit}
-            onSaveClick={handleEducationSaveClick}
+            onSubmitSuccess={handleDataSubmit}
+            onSaveClick={handleDataSaveClick}
             savedEducation={userData.education}
           />
           <ExperienceForm
-            onSubmitSuccess={handleExperienceSubmit}
-            onSaveClick={handleExperienceSaveClick}
+            onSubmitSuccess={handleDataSubmit}
+            onSaveClick={handleDataSaveClick}
             savedExperience={userData.experience}
           />
           <SkillsForm
-            onSubmitSuccess={handleSkillSubmit}
-            onSaveClick={handleSkillSaveClick}
+            onSubmitSuccess={handleDataSubmit}
+            onSaveClick={handleDataSaveClick}
             savedSkills={userData.skills}
           />
         </div>

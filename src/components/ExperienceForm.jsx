@@ -68,7 +68,6 @@ export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }
         <InputContainer type="date" id="endDate" label="End Date" placeholder="MM/YYYY" register={register} />
         <InputContainer type="text" id="location" label="Location" placeholder="Enter location" register={register} />
         <Textarea
-          type="textarea"
           id="description"
           label="Description"
           placeholder="Describe main tasks and achievements"

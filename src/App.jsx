@@ -13,9 +13,12 @@ import { useState } from 'react';
 import './style.css';
 import logo from './assets/images/cv.png';
 import jsPDF from 'jspdf';
+import { useForm } from 'react-hook-form';
 
 export const App = () => {
-  const [userData, setUserData] = useState({
+  const { register, watch, reset } = useForm();
+
+  const initialUserData = {
     personalInfo: {
       firstName: '',
       lastName: '',
@@ -31,7 +34,16 @@ export const App = () => {
     skills: [],
     education: [],
     experience: [],
-  });
+  };
+
+  const [userData, setUserData] = useState(initialUserData);
+
+  const personalInfo = {
+    firstName: watch('firstName'),
+    lastName: watch('lastName'),
+    professionalTitle: watch('professionalTitle'),
+    summary: watch('summary'),
+  };
 
   const [skillFormData, setSkillFormData] = useState('');
 
@@ -109,6 +121,7 @@ export const App = () => {
 
   const loadExampleData = () => {
     setUserData(exampleData);
+    reset(exampleData.personalInfo);
   };
 
   const handleDownload = () => {
@@ -136,7 +149,7 @@ export const App = () => {
               </button>
             </div>
           </div>
-          <PersonalDetailsForm {...userData.personalInfo} onChange={(e) => handleUserDataChange(e, 'personalInfo')} />
+          <PersonalDetailsForm {...userData.personalInfo} register={register} />
           <ContactInfoForm {...userData.contactInfo} onChange={(e) => handleUserDataChange(e, 'contactInfo')} />
           <EducationForm
             onSubmitSuccess={handleEducationSubmit}
@@ -161,9 +174,9 @@ export const App = () => {
           />
         </div>
         <div className="resume-container">
-          <ResumeInfoSection personalInfo={userData.personalInfo} contactInfo={userData.contactInfo} />
+          <ResumeInfoSection personalInfo={personalInfo} contactInfo={userData.contactInfo} />
           <div className="resume-main-section">
-            <ResumeSummarySection summary={userData.personalInfo.summary} />
+            <ResumeSummarySection summary={personalInfo.summary} />
             <ResumeEducationSection education={userData.education} />
             <ResumeExperienceSection experienceData={userData.experience} />
             <ResumeSkillsSection skills={userData.skills} />

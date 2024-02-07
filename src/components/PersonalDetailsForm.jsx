@@ -2,8 +2,9 @@ import { Input } from './Input';
 import { Textarea } from './Textarea';
 import personIcon from '../assets/images/person.png';
 import '../style.css';
+import { InputContainer } from './InputContainer';
 
-export const PersonalDetailsForm = ({ firstName, lastName, professionalTitle, summary, onChange }) => {
+export const PersonalDetailsForm = ({ firstName, lastName, professionalTitle, summary, register }) => {
   return (
     <div className="section-container">
       <h1 className="section-header">
@@ -11,42 +12,22 @@ export const PersonalDetailsForm = ({ firstName, lastName, professionalTitle, su
         Personal Details
       </h1>
       <form className="form">
-        <Input
+        <InputContainer
           label="First Name"
           type="text"
-          id="first-name"
-          name="firstName"
+          id="firstName"
           placeholder="Enter First Name"
-          value={firstName}
-          onChange={onChange}
+          register={register}
         />
-        <Input
-          label="Last Name"
-          type="text"
-          name="lastName"
-          id="last-name"
-          placeholder="Enter Last Name"
-          value={lastName}
-          onChange={onChange}
-        />
-        <Input
+        <InputContainer label="Last Name" type="text" id="lastName" placeholder="Enter Last Name" register={register} />
+        <InputContainer
           label="Professional Title"
           type="text"
-          name="professionalTitle"
-          id="professional-title"
+          id="professionalTitle"
           placeholder="e.g., Web Developer"
-          value={professionalTitle}
-          onChange={onChange}
+          register={register}
         />
-        <Textarea
-          label="Summary"
-          type="textarea"
-          name="summary"
-          id="summary"
-          placeholder="Write a brief summary about yourself"
-          value={summary}
-          onChange={onChange}
-        />
+        <Textarea label="Summary" id="summary" placeholder="Write a brief summary about yourself" register={register} />
       </form>
     </div>
   );

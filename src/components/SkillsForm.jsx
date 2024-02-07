@@ -2,7 +2,6 @@ import '../style.css';
 import skills from '../assets/images/skills.png';
 import { Input } from './Input';
 import { FormButtons } from './FormButtons';
-import { InputContainer } from './InputContainer';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
@@ -55,7 +54,7 @@ export const SkillsForm = ({ savedSkills, onSubmitSuccess, onSaveClick }) => {
         ))}
       </div>
       <form className="form" onSubmit={handleSubmit(handleSubmitClick)}>
-        <InputContainer type="text" id="skill" label="Skill" placeholder="Enter skill" register={register} />
+        <Input type="text" id="skill" label="Skill" placeholder="Enter skill" register={register} maxLength={25} />
         <FormButtons
           buttonText={'Skill'}
           editIndex={editIndex}

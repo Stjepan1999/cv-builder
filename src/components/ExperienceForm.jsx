@@ -6,7 +6,6 @@ import '../style.css';
 import experienceIcon from '../assets/images/briefcase.png';
 import editIcon from '../assets/images/edit.png';
 import { useForm } from 'react-hook-form';
-import { InputContainer } from './InputContainer';
 
 export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }) => {
   const { register, handleSubmit, reset, watch } = useForm();
@@ -33,7 +32,7 @@ export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }
   };
 
   const handleSaveClick = () => {
-    const updatedData = savedExperience.filter((item, index) => (index === editIndex ? watch() : item));
+    const updatedData = savedExperience.map((item, index) => (index === editIndex ? watch() : item));
     onSaveClick(updatedData, 'experience');
     setEditIndex(null);
     reset(initialExperienceForm);
@@ -67,16 +66,38 @@ export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }
       ))}
 
       <form className="form" onSubmit={handleSubmit(handleSubmitClick)}>
-        <InputContainer type="text" id="company" label="Company" placeholder="Enter Company Name" register={register} />
-        <InputContainer type="text" id="position" label="Position" placeholder="Enter Position" register={register} />
-        <InputContainer type="date" id="startDate" label="Start Date" placeholder="MM/YYYY" register={register} />
-        <InputContainer type="date" id="endDate" label="End Date" placeholder="MM/YYYY" register={register} />
-        <InputContainer type="text" id="location" label="Location" placeholder="Enter location" register={register} />
+        <Input
+          type="text"
+          id="company"
+          label="Company"
+          placeholder="Enter Company Name"
+          register={register}
+          maxLength={60}
+        />
+        <Input
+          type="text"
+          id="position"
+          label="Position"
+          placeholder="Enter Position"
+          register={register}
+          maxLength={60}
+        />
+        <Input type="date" id="startDate" label="Start Date" placeholder="MM/YYYY" register={register} />
+        <Input type="date" id="endDate" label="End Date" placeholder="MM/YYYY" register={register} />
+        <Input
+          type="text"
+          id="location"
+          label="Location"
+          placeholder="Enter location"
+          register={register}
+          maxLength={25}
+        />
         <Textarea
           id="description"
           label="Description"
           placeholder="Describe main tasks and achievements"
           register={register}
+          maxLength={500}
         />
         <FormButtons
           buttonText={'Experience'}

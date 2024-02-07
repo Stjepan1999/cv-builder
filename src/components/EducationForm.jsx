@@ -5,7 +5,6 @@ import '../style.css';
 import graduationCap from '../assets/images/graduation-cap.png';
 import editIcon from '../assets/images/edit.png';
 import { useForm } from 'react-hook-form';
-import { InputContainer } from './InputContainer';
 
 export const EducationForm = ({ savedEducation, onSubmitSuccess, onSaveClick }) => {
   const { register, handleSubmit, reset, watch } = useForm();
@@ -64,22 +63,24 @@ export const EducationForm = ({ savedEducation, onSubmitSuccess, onSaveClick }) 
       ))}
 
       <form className="form" onSubmit={handleSubmit(handleSubmitClick)}>
-        <InputContainer
+        <Input
           id="school"
           label="School"
           type="text"
           placeholder="e.g., University of London"
           register={register}
+          maxLength={60}
         />
-        <InputContainer
+        <Input
           id="degree"
           label="Degree"
           type="text"
           placeholder="e.g., Master's Degree in Computer Science"
           register={register}
+          maxLength={60}
         />
-        <InputContainer id="startDate" label="Start Date" type="date" placeholder="MM/YYYY" register={register} />
-        <InputContainer id="endDate" label="End Date" type="date" placeholder="MM/YYYY" register={register} />
+        <Input id="startDate" label="Start Date" type="date" placeholder="MM/YYYY" register={register} />
+        <Input id="endDate" label="End Date" type="date" placeholder="MM/YYYY" register={register} />
 
         <FormButtons
           buttonText={'Education'}

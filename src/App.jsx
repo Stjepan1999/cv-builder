@@ -24,8 +24,6 @@ export const App = () => {
       lastName: '',
       professionalTitle: '',
       summary: '',
-    },
-    contactInfo: {
       email: '',
       phone: '',
       location: '',
@@ -45,33 +43,19 @@ export const App = () => {
     summary: watch('summary'),
   };
 
-  const handleUserDataChange = (e, section) => {
-    const { name, value } = e.target;
-    setUserData((prevData) => ({ ...prevData, [section]: { ...prevData[section], [name]: value } }));
+  const contactInfo = {
+    email: watch('email'),
+    phone: watch('phone'),
+    location: watch('location'),
+    website: watch('website'),
   };
 
   const handleDataSubmit = (formData, section) => {
-    setUserData((prevData) => ({ ...prevData, [section]: [...prevData.education, formData] }));
+    setUserData((prevData) => ({ ...prevData, [section]: [...prevData[section], formData] }));
   };
 
   const handleDataSaveClick = (formData, section) => {
     setUserData((prevData) => ({ ...prevData, [section]: formData }));
-  };
-
-  const handleExperienceSubmit = (formData) => {
-    setUserData((prevData) => ({ ...prevData, experience: [...prevData.experience, formData] }));
-  };
-
-  const handleExperienceSaveClick = (formData) => {
-    setUserData((prevData) => ({ ...prevData, experience: formData }));
-  };
-
-  const handleSkillSubmit = (formData) => {
-    setUserData((prevData) => ({ ...prevData, skills: [...prevData.skills, formData] }));
-  };
-
-  const handleSkillSaveClick = (formData) => {
-    setUserData((prevData) => ({ ...prevData, skills: formData }));
   };
 
   const loadExampleData = () => {
@@ -104,8 +88,8 @@ export const App = () => {
               </button>
             </div>
           </div>
-          <PersonalDetailsForm {...userData.personalInfo} register={register} />
-          <ContactInfoForm {...userData.contactInfo} onChange={(e) => handleUserDataChange(e, 'contactInfo')} />
+          <PersonalDetailsForm register={register} />
+          <ContactInfoForm register={register} />
           <EducationForm
             onSubmitSuccess={handleDataSubmit}
             onSaveClick={handleDataSaveClick}
@@ -123,7 +107,7 @@ export const App = () => {
           />
         </div>
         <div className="resume-container">
-          <ResumeInfoSection personalInfo={personalInfo} contactInfo={userData.contactInfo} />
+          <ResumeInfoSection personalInfo={personalInfo} contactInfo={contactInfo} />
           <div className="resume-main-section">
             <ResumeSummarySection summary={personalInfo.summary} />
             <ResumeEducationSection education={userData.education} />

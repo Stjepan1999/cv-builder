@@ -2,9 +2,8 @@ import { Input } from './Input';
 import { Textarea } from './Textarea';
 import personIcon from '../assets/images/person.png';
 import '../style.css';
-import { InputContainer } from './InputContainer';
 
-export const PersonalDetailsForm = ({ firstName, lastName, professionalTitle, summary, register }) => {
+export const PersonalDetailsForm = ({ register }) => {
   return (
     <div className="section-container">
       <h1 className="section-header">
@@ -12,22 +11,37 @@ export const PersonalDetailsForm = ({ firstName, lastName, professionalTitle, su
         Personal Details
       </h1>
       <form className="form">
-        <InputContainer
+        <Input
           label="First Name"
           type="text"
           id="firstName"
           placeholder="Enter First Name"
           register={register}
+          maxLength={20}
         />
-        <InputContainer label="Last Name" type="text" id="lastName" placeholder="Enter Last Name" register={register} />
-        <InputContainer
+        <Input
+          label="Last Name"
+          type="text"
+          id="lastName"
+          placeholder="Enter Last Name"
+          register={register}
+          maxLength={20}
+        />
+        <Input
           label="Professional Title"
           type="text"
           id="professionalTitle"
           placeholder="e.g., Web Developer"
           register={register}
+          maxLength={40}
         />
-        <Textarea label="Summary" id="summary" placeholder="Write a brief summary about yourself" register={register} />
+        <Textarea
+          label="Summary"
+          id="summary"
+          placeholder="Write a brief summary about yourself"
+          register={register}
+          maxLength={500}
+        />
       </form>
     </div>
   );

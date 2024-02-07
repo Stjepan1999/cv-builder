@@ -1,7 +1,7 @@
 import { formatDate } from '../utils';
 
 export const ResumeEducationSection = ({ education }) => {
-  if (education) {
+  if (education[0]) {
     return (
       <div className="resume-section">
         <div className="resume-section-title">Education</div>

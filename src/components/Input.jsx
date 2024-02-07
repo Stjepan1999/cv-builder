@@ -1,6 +1,6 @@
 import '../style.css';
 
-export const Input = ({ id, label, type, name, value, placeholder, onChange }) => {
+export const Input = ({ id, label, type, placeholder, register, maxLength }) => {
   return (
     <div className="input-container">
       <label htmlFor={id} className="label-text">
@@ -10,10 +10,10 @@ export const Input = ({ id, label, type, name, value, placeholder, onChange }) =
         className="input"
         type={type}
         id={id}
-        name={name}
-        value={value}
+        name={id}
         placeholder={placeholder}
-        onChange={onChange}
+        {...register(id)}
+        maxLength={maxLength}
         required
       />
     </div>

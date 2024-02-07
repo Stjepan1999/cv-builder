@@ -5,8 +5,6 @@ export const exampleData = {
     professionalTitle: 'Web Developer',
     summary:
       'Creative problem solver and coding enthusiast specializing in crafting seamless user experiences. Proficient in HTML, CSS, JavaScript, and React. Passionate about transforming design concepts into interactive and visually stunning web applications. ',
-  },
-  contactInfo: {
     email: 'john.smith@gmail.com',
     phone: '+49 879 3123 983',
     location: 'London, UK',

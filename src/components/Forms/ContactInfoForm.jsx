@@ -5,7 +5,7 @@ import '../../style.css';
 export const ContactInfoForm = ({ register }) => {
   return (
     <div className="section-container">
-      <h1>
+      <h1 className="section-header">
         <img src={contactIcon} className="section-icon" alt="Phone Icon" />
         Contact Info
       </h1>

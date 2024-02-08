@@ -41,8 +41,7 @@ export const SkillsForm = ({ savedSkills, onSubmitSuccess, onSaveClick }) => {
 
   return (
     <div className="section-container">
-      <h1>
-        {' '}
+      <h1 className="section-header">
         <img src={skills} className="section-icon education" alt="Person skill icon" />
         Skills
       </h1>

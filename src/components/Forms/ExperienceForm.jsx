@@ -52,14 +52,14 @@ export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }
 
   return (
     <div className="section-container">
-      <h1>
+      <h1 className="section-header">
         <img src={experienceIcon} className="section-icon education" alt="Briefcase icon" />
         Experience
       </h1>
       {savedExperience.map((data, index) => (
         <div key={index} className="section-saved-data">
           <p>{data.company}</p>
-          <button onClick={() => handleEditClick(index)} className="no-button-style">
+          <button onClick={() => handleEditClick(index)} className="button-no-style">
             <img src={editIcon} alt="Edit" className="button-image" />
           </button>
         </div>

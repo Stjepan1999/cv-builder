@@ -135,7 +135,7 @@ body {
 .button-red:hover {
   background-color: rgb(210, 0, 0);
 }
-.no-button-style {
+.button-no-style {
   border: none;
   background-color: transparent;
 }
@@ -343,11 +343,28 @@ body {
     transform: scale(0.5);
     margin: -280px 0;
   }
+  .button {
+    width: 100%;
+  }
+  .control-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 @media (max-width: 460px) {
   .resume {
     transform: scale(0.4);
     margin: -340px 0;
+  }
+  .header {
+    text-align: center;
+    font-size: 36px;
+  }
+  .section-header {
+    font-size: 24px;
+  }
+  .section-icon {
+    height: 20px;
   }
 }
 @media (max-width: 370px) {

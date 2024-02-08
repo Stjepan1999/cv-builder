@@ -1,6 +1,6 @@
-import '../style.css';
-import skills from '../assets/images/skills.png';
-import { Input } from './Input';
+import '../../style.css';
+import skills from '../../assets/images/skills.png';
+import { Input } from '../Input';
 import { FormButtons } from './FormButtons';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';

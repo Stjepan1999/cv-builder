@@ -1,4 +1,4 @@
-import '../style.css';
+import '../../style.css';
 
 export const ResumeSkillsSection = ({ skills }) => {
   if (skills && skills.length > 0) {

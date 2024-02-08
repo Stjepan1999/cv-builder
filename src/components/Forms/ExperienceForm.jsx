@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Input } from './Input';
-import { Textarea } from './Textarea';
+import { Input } from '../Input';
+import { Textarea } from '../Textarea';
 import { FormButtons } from './FormButtons';
-import '../style.css';
-import experienceIcon from '../assets/images/briefcase.png';
-import editIcon from '../assets/images/edit.png';
+import '../../style.css';
+import experienceIcon from '../../assets/images/briefcase.png';
+import editIcon from '../../assets/images/edit.png';
 import { useForm } from 'react-hook-form';
 
 export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }) => {

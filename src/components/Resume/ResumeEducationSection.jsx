@@ -1,4 +1,4 @@
-import { formatDate } from '../utils';
+import { formatDate } from '../../utils';
 
 export const ResumeEducationSection = ({ education }) => {
   if (education[0]) {

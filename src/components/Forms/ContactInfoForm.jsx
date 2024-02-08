@@ -1,6 +1,6 @@
-import { Input } from './Input';
-import contactIcon from '../assets/images/phone-box.png';
-import '../style.css';
+import { Input } from '../Input';
+import contactIcon from '../../assets/images/phone-box.png';
+import '../../style.css';
 
 export const ContactInfoForm = ({ register }) => {
   return (

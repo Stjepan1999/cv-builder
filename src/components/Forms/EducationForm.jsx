@@ -1,9 +1,9 @@
-import { Input } from './Input';
+import { Input } from '../Input';
 import { FormButtons } from './FormButtons';
 import { useState } from 'react';
-import '../style.css';
-import graduationCap from '../assets/images/graduation-cap.png';
-import editIcon from '../assets/images/edit.png';
+import '../../style.css';
+import graduationCap from '../../assets/images/graduation-cap.png';
+import editIcon from '../../assets/images/edit.png';
 import { useForm } from 'react-hook-form';
 
 export const EducationForm = ({ savedEducation, onSubmitSuccess, onSaveClick }) => {

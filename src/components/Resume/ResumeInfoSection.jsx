@@ -1,7 +1,7 @@
-import emailIcon from '../assets/images/email.png';
-import locationIcon from '../assets/images/location.png';
-import phoneIcon from '../assets/images/phone.png';
-import webIcon from '../assets/images/web.png';
+import emailIcon from '../../assets/images/email.png';
+import locationIcon from '../../assets/images/location.png';
+import phoneIcon from '../../assets/images/phone.png';
+import webIcon from '../../assets/images/web.png';
 
 export const ResumeInfoSection = ({ personalInfo, contactInfo }) => {
   return (

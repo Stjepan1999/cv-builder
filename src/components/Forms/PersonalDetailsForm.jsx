@@ -1,7 +1,7 @@
-import { Input } from './Input';
-import { Textarea } from './Textarea';
-import personIcon from '../assets/images/person.png';
-import '../style.css';
+import { Input } from '../Input';
+import { Textarea } from '../Textarea';
+import personIcon from '../../assets/images/person.png';
+import '../../style.css';
 
 export const PersonalDetailsForm = ({ register }) => {
   return (

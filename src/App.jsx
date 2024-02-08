@@ -115,12 +115,14 @@ export const App = () => {
           />
         </div>
         <div className="resume-container">
-          <ResumeInfoSection personalInfo={personalInfo} contactInfo={contactInfo} />
-          <div className="resume-main-section">
-            <ResumeSummarySection summary={personalInfo.summary} />
-            <ResumeEducationSection education={userData.education} />
-            <ResumeExperienceSection experienceData={userData.experience} />
-            <ResumeSkillsSection skills={userData.skills} />
+          <div className="resume">
+            <ResumeInfoSection personalInfo={personalInfo} contactInfo={contactInfo} />
+            <div className="resume-main-section">
+              <ResumeSummarySection summary={personalInfo.summary} />
+              <ResumeEducationSection education={userData.education} />
+              <ResumeExperienceSection experienceData={userData.experience} />
+              <ResumeSkillsSection skills={userData.skills} />
+            </div>
           </div>
         </div>
       </div>

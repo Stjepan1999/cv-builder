@@ -23,12 +23,11 @@ body {
 
 .main {
   display: flex;
+  gap: 2rem;
   margin: auto;
   width: 100%;
-  padding: 32px 24px;
-  gap: 24px;
+  padding: 2rem;
   max-width: 1600px;
-  gap: 30px;
 }
 
 .section-container,
@@ -61,7 +60,7 @@ body {
   width: auto;
 }
 .forms-container {
-  width: 40%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -196,6 +195,11 @@ body {
 }
 
 .resume-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.resume {
   width: 21cm;
   min-height: 29.7cm;
   background-color: var(--color-white);
@@ -296,58 +300,59 @@ body {
   margin-bottom: 5px;
 }
 
-@media (max-width: 1200px) {
-  .resume-container {
-    transform: scale(0.9);
-  }
-}
-
-@media (max-width: 1000px) {
+@media (max-width: 1340px) {
   .main {
     flex-direction: column;
   }
   .forms-container {
-    width: 100%;
     overflow: hidden;
     height: auto;
   }
-  .resume-container {
-    width: 100%;
-    font-size: 0.8em;
+  .resume {
+    position: static;
   }
 }
 
-@media (max-width: 600px) {
-  .header {
-    font-size: 36px;
+@media (max-width: 870px) {
+  .resume {
+    transform: scale(0.9);
+    margin: -40px 0;
+    flex-shrink: 0;
   }
-  .resume-container {
-    font-size: 10px;
+}
+@media (max-width: 790px) {
+  .resume {
+    transform: scale(0.8);
+    margin: -100px 0;
   }
-  .resume-info-section {
-    height: 130px;
-    padding: 20px;
+}
+@media (max-width: 710px) {
+  .resume {
+    transform: scale(0.7);
+    margin: -160px 0;
   }
-  .resume-info-icon {
-    width: 15px;
-    height: 15px;
+}
+@media (max-width: 630px) {
+  .resume {
+    transform: scale(0.6);
+    margin: -220px 0;
   }
-  .resume-name {
-    font-size: 26px;
+}
+@media (max-width: 548px) {
+  .resume {
+    transform: scale(0.5);
+    margin: -280px 0;
   }
-  .resume-title {
-    font-size: 16px;
+}
+@media (max-width: 460px) {
+  .resume {
+    transform: scale(0.4);
+    margin: -340px 0;
   }
-  .resume-contact-section {
-    font-size: 10px;
-  }
-  .resume-section {
-    width: 90%;
-  }
-  .resume-section-title {
-    font-size: 14px;
-  }
-  .resume-entry-title {
-    font-size: 12px;
+}
+@media (max-width: 370px) {
+  .resume {
+    transform: scale(0.35);
+    margin: -370px 0;
   }
 }

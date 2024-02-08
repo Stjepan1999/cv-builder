@@ -25,7 +25,7 @@ export const exampleData = {
       position: 'Senior Software Engineer',
       startDate: '2018-06-01',
       endDate: '2022-12-31',
-      location: 'San Francisco, CA',
+      location: 'London, UK',
       description:
         'Led a team of developers in creating cutting-edge software solutions. Collaborated with cross-functional teams to deliver high-quality products. Contributed to the development and optimization of scalable and efficient code.',
     },

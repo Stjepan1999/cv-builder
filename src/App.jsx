@@ -9,14 +9,16 @@ import { ResumeExperienceSection } from './components/ResumeExperienceSection';
 import { ResumeSkillsSection } from './components/ResumeSkillsSection';
 import { ResumeEducationSection } from './components/ResumeEducationSection';
 import { exampleData } from './exampleData';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import './style.css';
 import logo from './assets/images/cv.png';
 import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 export const App = () => {
   const { register, watch, reset } = useForm();
+  const resumeRef = useRef(null);
 
   const initialUserData = {
     personalInfo: {
@@ -68,11 +70,21 @@ export const App = () => {
     reset(initialUserData.personalInfo);
   };
 
-  const handleDownload = () => {
-    const content = new jsPDF('portrait', 'pt', 'a4');
-    content.html(document.querySelector('.resume-container')).then(() => {
-      content.save('resume.pdf');
-    });
+  const handleDownloadClick = () => {
+    const pdfWidth = 210; // Width of A4 page in mm
+    const pdfHeight = 297; // Height of A4 page in mm
+
+    const content = new jsPDF('portrait', 'mm', 'a4');
+
+    html2canvas(resumeRef.current, { scale: 6 })
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/jpeg', 0.8);
+        content.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+        content.save('resume.pdf');
+      })
+      .catch((error) => {
+        console.error('Error generating PDF:', error);
+      });
   };
 
   return (
@@ -91,7 +103,7 @@ export const App = () => {
               <button className="button button-wide" onClick={handleClearClick}>
                 Clear
               </button>
-              <button className="button button-wide button-red" onClick={handleDownload}>
+              <button className="button button-wide button-red" onClick={handleDownloadClick}>
                 Download PDF
               </button>
             </div>
@@ -115,7 +127,7 @@ export const App = () => {
           />
         </div>
         <div className="resume-container">
-          <div className="resume">
+          <div className="resume" ref={resumeRef}>
             <ResumeInfoSection personalInfo={personalInfo} contactInfo={contactInfo} />
             <div className="resume-main-section">
               <ResumeSummarySection summary={personalInfo.summary} />

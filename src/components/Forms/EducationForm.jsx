@@ -7,7 +7,13 @@ import editIcon from '../../assets/images/edit.png';
 import { useForm } from 'react-hook-form';
 
 export const EducationForm = ({ savedEducation, onSubmitSuccess, onSaveClick }) => {
-  const { register, handleSubmit, reset, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   const [editIndex, setEditIndex] = useState(null);
 
@@ -69,6 +75,7 @@ export const EducationForm = ({ savedEducation, onSubmitSuccess, onSaveClick }) 
           type="text"
           placeholder="e.g., University of London"
           register={register}
+          errors={errors}
           maxLength={60}
         />
         <Input
@@ -77,10 +84,18 @@ export const EducationForm = ({ savedEducation, onSubmitSuccess, onSaveClick }) 
           type="text"
           placeholder="e.g., Master's Degree in Computer Science"
           register={register}
+          errors={errors}
           maxLength={60}
         />
-        <Input id="startDate" label="Start Date" type="date" placeholder="MM/YYYY" register={register} />
-        <Input id="endDate" label="End Date" type="date" placeholder="MM/YYYY" register={register} />
+        <Input
+          id="startDate"
+          label="Start Date"
+          type="date"
+          placeholder="MM/YYYY"
+          register={register}
+          errors={errors}
+        />
+        <Input id="endDate" label="End Date" type="date" placeholder="MM/YYYY" register={register} errors={errors} />
 
         <FormButtons
           buttonText={'Education'}

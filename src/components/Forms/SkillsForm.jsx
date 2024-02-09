@@ -6,7 +6,13 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
 export const SkillsForm = ({ savedSkills, onSubmitSuccess, onSaveClick }) => {
-  const { register, handleSubmit, reset, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   const [editIndex, setEditIndex] = useState(null);
 
@@ -53,7 +59,15 @@ export const SkillsForm = ({ savedSkills, onSubmitSuccess, onSaveClick }) => {
         ))}
       </div>
       <form className="form" onSubmit={handleSubmit(handleSubmitClick)}>
-        <Input type="text" id="skill" label="Skill" placeholder="Enter skill" register={register} maxLength={25} />
+        <Input
+          type="text"
+          id="skill"
+          label="Skill"
+          placeholder="Enter skill"
+          register={register}
+          errors={errors}
+          maxLength={25}
+        />
         <FormButtons
           buttonText={'Skill'}
           editIndex={editIndex}

@@ -194,6 +194,16 @@ body {
   height: 100px;
 }
 
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+input:invalid + span:after {
+  content: 'Max Length Exceed.';
+  font-size: 12px;
+  color: red;
+}
+
 .resume-container {
   width: 100%;
   display: flex;

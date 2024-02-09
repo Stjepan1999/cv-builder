@@ -2,7 +2,7 @@ import { Input } from '../Input';
 import contactIcon from '../../assets/images/phone-box.png';
 import '../../style.css';
 
-export const ContactInfoForm = ({ register }) => {
+export const ContactInfoForm = ({ register, errors }) => {
   return (
     <div className="section-container">
       <h1 className="section-header">
@@ -16,15 +16,25 @@ export const ContactInfoForm = ({ register }) => {
           label="Email"
           placeholder="example@email.com"
           register={register}
+          errors={errors}
           maxLength={50}
         />
-        <Input type="tel" id="phone" label="Phone" placeholder="+44 123 4567 910" register={register} maxLength={20} />
+        <Input
+          type="tel"
+          id="phone"
+          label="Phone"
+          placeholder="+44 123 4567 910"
+          register={register}
+          errors={errors}
+          maxLength={20}
+        />
         <Input
           type="text"
           id="location"
           label="Location"
           placeholder="e.g., London, UK"
           register={register}
+          errors={errors}
           maxLength={50}
         />
         <Input
@@ -33,6 +43,7 @@ export const ContactInfoForm = ({ register }) => {
           label="Website"
           placeholder="www.linkedin.com/johnsmith"
           register={register}
+          errors={errors}
           maxLength={60}
         />
       </form>

@@ -8,7 +8,13 @@ import editIcon from '../../assets/images/edit.png';
 import { useForm } from 'react-hook-form';
 
 export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }) => {
-  const { register, handleSubmit, reset, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   const [editIndex, setEditIndex] = useState(null);
 
@@ -72,6 +78,7 @@ export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }
           label="Company"
           placeholder="Enter Company Name"
           register={register}
+          errors={errors}
           maxLength={60}
         />
         <Input
@@ -80,16 +87,25 @@ export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }
           label="Position"
           placeholder="Enter Position"
           register={register}
+          errors={errors}
           maxLength={60}
         />
-        <Input type="date" id="startDate" label="Start Date" placeholder="MM/YYYY" register={register} />
-        <Input type="date" id="endDate" label="End Date" placeholder="MM/YYYY" register={register} />
+        <Input
+          type="date"
+          id="startDate"
+          label="Start Date"
+          placeholder="MM/YYYY"
+          register={register}
+          errors={errors}
+        />
+        <Input type="date" id="endDate" label="End Date" placeholder="MM/YYYY" register={register} errors={errors} />
         <Input
           type="text"
           id="location"
           label="Location"
           placeholder="Enter location"
           register={register}
+          errors={errors}
           maxLength={25}
         />
         <Textarea
@@ -97,6 +113,7 @@ export const ExperienceForm = ({ savedExperience, onSubmitSuccess, onSaveClick }
           label="Description"
           placeholder="Describe main tasks and achievements"
           register={register}
+          errors={errors}
           maxLength={500}
         />
         <FormButtons

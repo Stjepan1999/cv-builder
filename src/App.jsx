@@ -17,7 +17,12 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
 export const App = () => {
-  const { register, watch, reset } = useForm();
+  const {
+    register,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
   const resumeRef = useRef(null);
 
   const initialUserData = {
@@ -108,8 +113,8 @@ export const App = () => {
               </button>
             </div>
           </div>
-          <PersonalDetailsForm register={register} />
-          <ContactInfoForm register={register} />
+          <PersonalDetailsForm register={register} errors={errors} />
+          <ContactInfoForm register={register} errors={errors} />
           <EducationForm
             onSubmitSuccess={handleDataSubmit}
             onSaveClick={handleDataSaveClick}
